@@ -1,0 +1,36 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	  <div class="field">
+		<%= f.label :studio_id %><br>
+		<%= f.select :studio_id, Course::GETSTUDIOS   %>
+	  </div>
+	  <div class="field textCapitalize">
+		<%= f.label :style_id %><br>
+		<%= f.select :style_id, Course::GETSTYLES,{},class:'textCapitalize' %>
+	  </div>
+	  <div class="field">
+		<%= f.label :start %><br>
+		<%= f.time_select :start, ampm: false, minute_step: 15, :ignore_date => true %>
+	  </div>
+	  <div class="field">
+		<%= f.label :end %><br>
+		<%= f.time_select :end, ampm: false, minute_step: 15, :ignore_date => true %>
+	  </div>
+	  <div class="field textCapitalize">
+		<%= f.label :weekday %><br>
+		<%= f.select :weekday, Course::WEEKDAYS,{},class:'textCapitalize'   %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit %>
+	  </div>
+<% end %>

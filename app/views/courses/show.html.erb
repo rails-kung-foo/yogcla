@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Studio:</strong>
+  <%=  @studios.find_by(id: @course.studio_id).name %>
+</p>
+
+<p class="textCapitalize">
+  <strong>Style:</strong>
+  <%= @styles.find_by(id: @course.style_id).stil %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @course.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @course.end %>
+</p>
+
+<p class="textCapitalize">
+  <strong>Weekday:</strong>
+  <%= @course.weekday %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

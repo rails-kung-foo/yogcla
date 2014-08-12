@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>YogaBerlin</title>
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>">
+	<%= render 'layouts/background_slider' %>
+<!-- header -->
+	<%= render 'layouts/header' %>
+
+
+<!-- Content -->
+	<div class="container">
+<!-- flash -->
+	  <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
+	  
+		<%= yield %>
+		
+
+	</div>
+	
+	  		<% debug(session) if Rails.env.development? %>
+	
+	<footer>
+	  <div class="container">
+		<%= link_to 'Info', info_path, alt: 'Information', title: 'Information' %>
+
+	  </div>
+	</footer>
+	
+	
+
+	
+</body>
+</html>

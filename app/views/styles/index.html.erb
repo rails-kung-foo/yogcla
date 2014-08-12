@@ -1,0 +1,29 @@
+<h1>Listing styles</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Stil</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+	<% cache ['storeStyle', Style.latest] do %> 
+		<% @styles.each do |style| %>
+			  <% cache ['entry', style] do %> 	
+				  <tr>
+					<td><%= style.stil %></td>
+					<td><%= link_to 'Show', style, class: 'btn btn-default btn-xs'  %></td>
+					<td><%= link_to 'Edit', edit_style_path(style), class: 'btn btn-info btn-xs' %></td>
+					<td><%= link_to 'Destroy', style, method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %></td>
+				  </tr>
+			  <% end %>
+		<% end %>
+	<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Style', new_style_path %>
