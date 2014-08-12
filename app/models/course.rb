@@ -5,6 +5,8 @@ class Course < ActiveRecord::Base
   belongs_to :style
   
   	include Trimmer
+	trimmed_fields :start, :end
+	validates :start, :end, presence: true
   
 	# Data for select field
 	WEEKDAYS = [

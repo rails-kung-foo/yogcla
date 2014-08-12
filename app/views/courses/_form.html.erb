@@ -20,11 +20,11 @@
 	  </div>
 	  <div class="field">
 		<%= f.label :start %><br>
-		<%= f.time_select :start, ampm: false, minute_step: 15, :ignore_date => true %>
+		<%= f.text_field :start %>
 	  </div>
 	  <div class="field">
 		<%= f.label :end %><br>
-		<%= f.time_select :end, ampm: false, minute_step: 15, :ignore_date => true %>
+		<%= f.text_field :end %>
 	  </div>
 	  <div class="field textCapitalize">
 		<%= f.label :weekday %><br>
