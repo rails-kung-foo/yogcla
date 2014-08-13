@@ -18,9 +18,11 @@
 				<td><%= studio.name %></td>
 				<td><%= studio.address %></td>
 				<td><%= link_to 'Visit Website', studio.url %></td>
+				<% if session[:admin_id]%>	
 				<td><%= link_to 'Show', studio, class: 'btn btn-default btn-xs' %></td>
 				<td><%= link_to 'Edit', edit_studio_path(studio), class: 'btn btn-info btn-xs' %></td>
 				<td><%= link_to 'Destroy', studio, method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %></td>
+			  <% end %>
 			  </tr>
 			<% end %>
 		<% end %>
@@ -29,5 +31,6 @@
 </table>
 
 <br>
-
+<% if session[:admin_id]%>
 <%= link_to 'New Studio', new_studio_path %>
+<% end %>

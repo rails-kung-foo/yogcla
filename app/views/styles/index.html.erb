@@ -14,9 +14,11 @@
 			  <% cache ['entry', style] do %> 	
 				  <tr>
 					<td><%= style.stil %></td>
+					<% if session[:admin_id]%>
 					<td><%= link_to 'Show', style, class: 'btn btn-default btn-xs'  %></td>
 					<td><%= link_to 'Edit', edit_style_path(style), class: 'btn btn-info btn-xs' %></td>
 					<td><%= link_to 'Destroy', style, method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %></td>
+					<% end %>
 				  </tr>
 			  <% end %>
 		<% end %>
@@ -25,5 +27,6 @@
 </table>
 
 <br>
-
+<% if session[:admin_id]%>
 <%= link_to 'New Style', new_style_path %>
+<% end %>

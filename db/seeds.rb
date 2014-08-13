@@ -1,8 +1,13 @@
 #encoding: utf-8
-
+Admin.delete_all
 Studio.delete_all
 Style.delete_all
 Course.delete_all
+# Generate Admin
+Admin.create!(
+	name: "admin",
+	password: "qwe123"
+)
 # generate studios
 Studio.create!(
 	name: "Yellow Yoga",

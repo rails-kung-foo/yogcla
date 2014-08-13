@@ -4,6 +4,10 @@
 body .left { float: left; }
 body .right { float: right; }
 body .textCapitalize { text-transform: capitalize; }
+body .marginBottom { margin-bottom: 10px; }
+body .marginTop { margin-top: 10px; }
+body .marginRight { margin-right: 10px; }
+body .marginLeft { margin-left: 10px; }
 
 
 /*  mixins & variable */
@@ -62,7 +66,14 @@ body {
 		.container{
 			padding: 10px;
 		}	
-		
+		a {
+			padding: 2px 3px;
+		}
+		.adminNav {
+			form {
+				float: right;
+			}
+		}
 	}
 }
 
