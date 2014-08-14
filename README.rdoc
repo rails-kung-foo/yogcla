@@ -1,12 +1,12 @@
 == README
 
-My second Rails app. Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art. 
+My second Rails app. Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art.  
 
-Of course the data is fake, it is a project for me to learn rails. :) 
+Of course the data is fake, this project helps me to learn and understand rails. :) 
+
 
 TODO:
-- Admin area
-- Frontpage with fully seach
+- Frontpage with fully seach (tricky for me)
 - Deploy at Heroku or...!
 
 <tt>rake doc:app</tt>.
