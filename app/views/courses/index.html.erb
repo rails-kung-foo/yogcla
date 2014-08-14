@@ -17,7 +17,7 @@
     <% @courses.each do |course| %>
 	  <% cache ['entry', course] do %> 	
       <tr>
-        <td><%= @studios.find_by(id: course.studio_id).name %></td>
+        <td><%=  link_to @studios.find_by(id: course.studio_id).name, studio_path(course.studio_id)  %></td>
         <td class="textCapitalize" ><%= @styles.find_by(id: course.style_id).stil  %></td>
         <td><%= course.start %></td>
         <td><%= course.end %></td>

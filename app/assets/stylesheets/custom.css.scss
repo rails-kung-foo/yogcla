@@ -52,7 +52,11 @@ body {
 			}
 		}
 	}
-	
+	.alert {
+		border-color: #333;
+		background-color: lightyellow;
+		font: bold 1em tahoma;
+	}
 	footer {
 		z-index: 1;
 		position: fixed;
@@ -75,15 +79,17 @@ body {
 			}
 		}
 	}
+	/* END footer */
 }
-
+/* END body */
 
 /* debug */
 .debug_dump {
 	display: block;
 	height: 20px;
 	overflow: hidden;
-	margin: 50px 0;
+	margin-bottom: 50px;
+	bottom: -40px;
 	@include topOfBg;
 	
 	&.foldDown {

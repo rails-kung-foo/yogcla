@@ -20,16 +20,18 @@ class Course < ActiveRecord::Base
 	]
 	
 	# Set ready for select field. Get data from db!
-	GETSTUDIOS = []
-	GETSTYLES = []
+	GETSTUDIOS = Studio.all.collect(&:name)
+	GETSTYLES = Style.all.collect(&:stil)
 	
-	Style.all.each do |x|
-		GETSTYLES << x.stil
-	end
 	
-	Studio.all.each do |x|
-		GETSTUDIOS << x.name
-	end
+	
+	# Style.all.each do |x|
+		# GETSTYLES << x.stil
+	# end
+	
+	# Studio.all.each do |x|
+		# GETSTUDIOS << x.name
+	# end
   
   
   	# caching 
