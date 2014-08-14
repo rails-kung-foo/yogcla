@@ -1,4 +1,5 @@
 require 'trimmer'
+require 'formHelper'
 class Course < ActiveRecord::Base
 	# Gatekeeper, man the door!
   belongs_to :studio
@@ -8,20 +9,7 @@ class Course < ActiveRecord::Base
 	trimmed_fields :start, :end
 	validates :start, :end, presence: true
   
-	# Data for select field
-	WEEKDAYS = [
-		"sunday",
-		"monday",
-		"tuesday",
-		"wednesday",
-		"thursday",
-		"friday",
-		"saturday"
-	]
-	
-	# Set ready for select field. Get data from db!
-	GETSTUDIOS = Studio.all.collect(&:name)
-	GETSTYLES = Style.all.collect(&:stil)
+
 	
 	
 	

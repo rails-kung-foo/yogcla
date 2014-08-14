@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Search for your Yoga class</h1>
+<% form_tag course_path, method: 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+
+  </p>
+  <p>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
