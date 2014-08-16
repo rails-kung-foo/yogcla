@@ -3,7 +3,9 @@
 *	
 *		
 */	
+
 $(function() {
+
 	// Turn on specific css for js.
 	$('body').removeClass('jsOff');
 	
@@ -59,26 +61,41 @@ $(function() {
 		
 		newAjax.success(function(aData){
 			var data = $('table',aData).first(),
-			timeTabelWrap = $(document.createElement('div')).height(0).css({'overflow':'hidden'});
+			timeTabelWrap = $(document.createElement('div')).css({overflow:'hidden',})
 			
 			timeTabelWrap.prop('id','searchResult').append(data);
 			jsSearch.after(timeTabelWrap);
+			timeTabelWrap.slideUp(0);
+			
+			filterFuc();
 		});
 		
-		var searchResult = $('#searchResult');
-		// Catch submit and do filter
-		jsSearch.submit(function(){
-			var dis			= $(this),
-				style_id	= dis.find('#style_id').val(),
-				weekday		= dis.find('#weekday').val();
+		var filterFuc = function(){
+			var searchResult = $('#searchResult'),
+			allCourses = searchResult.find('tbody').children('tr');
+
+			allCourses.addClass('hidden');
+			// Catch submit and do filter
+			jsSearch.submit(function(){
+				searchResult.slideUp();
+				allCourses.addClass('hidden');
 				
-			
-			
-			
-			return false
-			
-		});
-		//END jsSearch Click
+				var dis			= $(this),
+					style_id	= dis.find('#style_id').val(),
+					weekday		= dis.find('#weekday').val(),
+					time 		= '',
+					firstFilter = allCourses.filter('.'+ style_id +'.'+weekday);
+					
+				$.each(dis.find('#searchTime').children('select'),function(i,v){
+					return time += $(this).val();
+				});	
+				firstFilter.filter('.'+time).removeClass('hidden');
+				searchResult.slideDown(300);
+				return false
+			});
+			//END jsSearch Click
+		};
+		//END function FIlter
 	};	
 	//END activeSearch
 	

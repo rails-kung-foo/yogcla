@@ -1,13 +1,16 @@
 /* site */
 /* Generals */
 
-body .left { float: left; }
-body .right { float: right; }
-body .textCapitalize { text-transform: capitalize; }
-body .marginBottom { margin-bottom: 10px; }
-body .marginTop { margin-top: 10px; }
-body .marginRight { margin-right: 10px; }
-body .marginLeft { margin-left: 10px; }
+body{
+	.left { float: left; }
+	.right { float: right; }
+	.textCapitalize { text-transform: capitalize; }
+	.marginBottom { margin-bottom: 10px; }
+	.marginTop { margin-top: 10px; }
+	.marginRight { margin-right: 10px; }
+	.marginLeft { margin-left: 10px; }
+	.hidden { display: none;}	
+}
 
 
 /*  mixins & variable */
@@ -67,19 +70,40 @@ body {
 	
 	/* jsSearch definitons */
 	#jsSearch {
+		overflow: hidden;
+		clear: both;
+		
 		form {
 			position: relative;
-		
+			margin: auto;
+			
 			input[type] {
-				margin: 20px 0 0 10px;
+				margin: 19px 0 0 0;
 			}
 			>div {
 				float: left;
-				margin-left: 10px;
+				margin: 5px;
+				padding: 0;
+				width: auto;
 				
 				&:first-child{
 					margin-left: 0;
 				}
+			}
+		}
+	}
+	
+	/* jsForm media  */
+	@media all and (min-width: 465px)  {
+		#jsSearch {
+			form {
+				width: 465px;
+			}
+		}
+		@media all and (min-width: 650px)  {
+			#searchResult {
+				margin: auto;
+				width: 600px;
 			}
 		}
 	}

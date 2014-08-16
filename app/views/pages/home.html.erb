@@ -4,22 +4,23 @@
 <div id="jsSearch">
 	<%= form_tag root_path, :method => 'get' do %>
 	
-	  <div class="field textCapitalize">
+	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :style_id %><br>
 		<%= select_tag :style_id,options_for_select(Course::GETSTYLES),class:'textCapitalize'   %>
 	  </div>
 	  
-	  <div class="field textCapitalize">
+	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :weekday %><br>
 		<%= select_tag :weekday, options_for_select(Course::WEEKDAYS),class:'textCapitalize'   %>
 	  </div>
 	  
-	  <div class="field textCapitalize">
+	  <div id="searchTime" class="field textCapitalize col-md-3">
 		<%= label_tag :start %><br>
 		<%= time_select :start, params[:start], { minute_step: 15, ignore_date: true }   %>
 	  </div>
-	 
-	  <%= submit_tag "Search", :name => nil %>	
+	   <div  class="field textCapitalize col-md-3">
+		<%= submit_tag "Search", :name => nil %>
+	  </div>
 	<% end %>
 
 </div>
