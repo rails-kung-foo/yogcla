@@ -1,0 +1,14 @@
+	<footer>
+	  <div class="container">
+		<%= link_to 'Info', info_path, alt: 'Information', title: 'Information' %>
+		<div class="adminNav right">
+			<% unless session[:admin_id] %>
+				<%= link_to 'Admin Login', login_url, alt: 'Admin', title: 'Admin' %>
+			<% else %>
+				<%= link_to 'Manage Admins', admins_url, alt: 'Admin', title: 'Admin',
+					class: 'left marginRight' %>
+				<%= button_to 'Logout', logout_path, method: :delete %>
+			<% end %>
+		</div>
+	  </div>
+	</footer>

@@ -26,6 +26,12 @@ html {
 body {
 	padding-top: 52px;
 
+	&.jsOff{
+		#jsSearch {
+			display: none;
+		}
+	}
+	
 	>.container{
 		@include topOfBg;
 		background-color: #fff; 
@@ -37,6 +43,7 @@ body {
 		box-shadow: 1px 1px 3px #333;
 	}
 	
+	/* Main nav */
 	.navbar-default {
 		@include usaBg;
 		
@@ -57,6 +64,26 @@ body {
 		background-color: lightyellow;
 		font: bold 1em tahoma;
 	}
+	
+	/* jsSearch definitons */
+	#jsSearch {
+		form {
+			position: relative;
+		
+			input[type] {
+				margin: 20px 0 0 10px;
+			}
+			>div {
+				float: left;
+				margin-left: 10px;
+				
+				&:first-child{
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	
 	footer {
 		z-index: 1;
 		position: fixed;

@@ -12,11 +12,11 @@
 
 	  <div class="field">
 		<%= f.label :studio_id %><br>
-		<%= f.select :studio_id, Course::GETSTUDIOS   %>
+		<%= f.select :studio_id, GETSTUDIOS   %>
 	  </div>
 	  <div class="field textCapitalize">
 		<%= f.label :style_id %><br>
-		<%= f.select :style_id, Course::GETSTYLES,{},class:'textCapitalize' %>
+		<%= f.select :style_id, GETSTYLES,{},class:'textCapitalize' %>
 	  </div>
 	  <div class="field">
 		<%= f.label :start %><br>
@@ -28,7 +28,7 @@
 	  </div>
 	  <div class="field textCapitalize">
 		<%= f.label :weekday %><br>
-		<%= f.select :weekday, Course::WEEKDAYS,{},class:'textCapitalize'   %>
+		<%= f.select :weekday, WEEKDAYS,{},class:'textCapitalize'   %>
 	  </div>
 	  <div class="actions">
 		<%= f.submit %>

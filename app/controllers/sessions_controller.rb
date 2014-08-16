@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
 	admin = Admin.find_by(name: params[:name])
 	if admin and admin.authenticate(params[:password])
 		session[:admin_id] = admin.id
-		redirect_to root_url,notice: "Welcome #{admin.name}! The footer has now admin links. You can change, create, or delete Courses, Styles, or Studios on the dedicated pages!"
+		redirect_to root_url,notice: "Welcome #{admin.name}! The footer has now admin links.
+		You can change, create, or delete Courses, Styles, or Studios on the dedicated pages!"
 	else
 		redirect_to login_url, notice:"Invalid Name/Password"
 	end

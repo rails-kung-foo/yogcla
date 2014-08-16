@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>YogaBerlin</title>
   
@@ -11,41 +11,31 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= controller.controller_name %>">
+
+<body class="jsOff <%= controller.controller_name %>">
 	<%= render 'layouts/background_slider' %>
+	
 <!-- header -->
 	<%= render 'layouts/header' %>
 
 
 <!-- Content -->
 	<div class="container">
+	
 <!-- flash -->
 	  <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
 	  
+<!-- Yield Field -->	  
 		<%= yield %>
 		
-
 	</div>
 	
 <% debug(session) if Rails.env.development? %>
-<!-- flash -->	
-	<footer>
-	  <div class="container">
-		<%= link_to 'Info', info_path, alt: 'Information', title: 'Information' %>
-		<div class="adminNav right">
-			<% unless session[:admin_id] %>
-				<%= link_to 'Admin Login', login_url, alt: 'Admin', title: 'Admin' %>
-			<% else %>
-				<%= link_to 'Manage Admins', admins_url, alt: 'Admin', title: 'Admin',
-					class: 'left marginRight' %>
-				<%= button_to 'Logout', logout_path, method: :delete %>
-			<% end %>
-		</div>
-	  </div>
-	</footer>
-	
+
+<!-- footer -->	
+		<%= render 'layouts/footer' %>
 	
 
 	

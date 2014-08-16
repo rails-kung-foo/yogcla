@@ -5,17 +5,18 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
-	@studios = Studio.all
-	@styles = Style.all
-  end
+		@courses = Course.all
+		@courses ||= @courses.find_by("name like ?",  params[:search])
+		@studios = Studio.all
+		@styles = Style.all
+	end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @courses = Course.all
-	@studios = Studio.all
-	@styles = Style.all
+		@courses = Course.all
+		@studios = Studio.all
+		@styles = Style.all
   end
 
   # GET /courses/new

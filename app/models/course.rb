@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   belongs_to :studio
   belongs_to :style
   
-  	include Trimmer
+	include Trimmer
 	trimmed_fields :start, :end
 	validates :start, :end, presence: true
   
@@ -22,8 +22,13 @@ class Course < ActiveRecord::Base
 	# end
   
   
-  	# caching 
+  # caching 
 	def self.latest
 		Course.order(:updated_at).last
 	end
+	# set name
+	def self.set_name(course_id)
+		find_by(id: course_id).name
+	end
+	
 end
