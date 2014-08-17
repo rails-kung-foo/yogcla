@@ -19,10 +19,10 @@ TODO:
 - Deploy at Heroku or...!
 - Improve and add require strength password validation
 - JS filter:
-	- filter is after relaod functional issue (turbolink issue)
-	- Add animation for height
-	- Add result count
-	- reAdd filter Time
+  - filter is after relaod functional issue (turbolink issue)
+  - Add animation for height
+  - Add result count
+  - reAdd filter Time
 
 
 <tt>rake doc:app</tt>.
