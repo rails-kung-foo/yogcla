@@ -12,12 +12,12 @@ Done:
 
 
 TODO:
-- Course page with rails filter with fully seach (tricky for me)
+- Course page with rails filter seach (tricky)
 - Javascript/rails filter improvement: Double name reduce to one for class; 
 - Deploy at Heroku or...!
 - Improve and add require strength password validation
 - JS filter:
--- only after a reload JS Filter is fully functional (turbolink issue)
--- Improve filter: option based filters (show all styles on monday)
+	- filter is after relaod functional issue (turbolink issue)
+	- Improve filter: option based filters (show all styles on monday)
 
 <tt>rake doc:app</tt>.
