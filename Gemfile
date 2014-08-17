@@ -4,11 +4,13 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
 end
 source 'https://rubygems.org'
 
-
+group :development, :test do
+	# Use sqlite3 as the database for Active Record
+	gem 'sqlite3'
+end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 
 
 # Use Uglifier as compressor for JavaScript assets
