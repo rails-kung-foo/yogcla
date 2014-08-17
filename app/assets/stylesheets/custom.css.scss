@@ -9,7 +9,8 @@ body{
 	.marginTop { margin-top: 10px; }
 	.marginRight { margin-right: 10px; }
 	.marginLeft { margin-left: 10px; }
-	.hidden { display: none;}	
+	.hidden { display: none;}
+
 }
 
 
@@ -91,6 +92,11 @@ body {
 				}
 			}
 		}
+	}
+	
+	#searchResult.showAll tbody tr{
+		display: table-row !important;
+		visibility: visible !important;
 	}
 	
 	/* jsForm media  */

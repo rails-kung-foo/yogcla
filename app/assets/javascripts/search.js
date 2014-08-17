@@ -1,18 +1,20 @@
-/*	JavaScript search for Yogclas front-page rev .01  
+/*	JavaScript search for Yogclas front-page rev .02  
 *	Get with ajax from courses all classes and the filter it.
-*	
+*	rev.01 = basic
+*	rev.01 = separate search
 *		
 */	
 
 $(function() {
 
-	// Turn on specific css for js.
+	// Hide filter for disabled js
 	$('body').removeClass('jsOff');
 	
 	
 	var jsSearch = $('#jsSearch'),
 	activatedSearch = function(){	
 		// search function start
+		
 		var doAjaxRequest = function(href){
 			return $.ajax({
 					'url': 'http://'+document.location.host+'/'+href
@@ -30,74 +32,102 @@ $(function() {
 		},
 		urlSearch = getUrlVars(document.location.search);
 		
-		// Preselecting filter
-		$.each(urlSearch,function(i,v){	
-				
-			// Check if value existing
-			if( !v )
-				return false;
-
-			// preselecting timer is a bit tricky due of ascii code, and I'm lazy  
-			if( v.indexOf('start') ){	
-				// preselecting for weekday and style if existing
-				if( $('#'+ v +'').length )
-					$('#'+ v +'').val(''+ urlSearch[''+ v +''] +'').attr('selected', true)
-			}else{
-				// preselect hour and minute
-				if(i == 3 )
-					jsSearch.find('select[id*="start"]').first()
-					.find('option[value="'+ urlSearch[''+ v +''] +'"]')
-					.attr('selected',true);
-				else
-					jsSearch.find('select[id*="start"]').last()
-					.find('option[value="'+ urlSearch[''+ v +''] +'"]')
-					.attr('selected',true);
-			}
-		});
 		
 		// Get all courses and prepare data
 		var newAjax = doAjaxRequest('courses');
 		
-		
+		// build filter;
 		newAjax.success(function(aData){
 			var data = $('table',aData).first(),
-			timeTabelWrap = $(document.createElement('div')).css({overflow:'hidden',})
+			optionStyle = $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
+			optionWeekday = $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
+			noResult = $(document.createElement('p')).text('No Result').prop('id','showNoResult').addClass('hidden'),
+			timeTabelWrap = $(document.createElement('div')).css({overflow:'hidden',});
+			
+			$('#style_id').prepend(optionStyle);
+			$('#weekday').prepend(optionWeekday);
 			
 			timeTabelWrap.prop('id','searchResult').append(data);
-			jsSearch.after(timeTabelWrap);
+			jsSearch.after(timeTabelWrap, noResult);
 			timeTabelWrap.slideUp(0);
 			
+			// Preselecting filter
+			$.each(urlSearch,function(i,v){	
+					
+				// Check if value existing
+				if( !v )
+					return false;
+
+				// preselecting timer is a bit tricky due of ascii code, and I'm lazy  
+				if( v.indexOf('start') ){	
+					// preselecting for weekday and style if existing
+					if( $('#'+ v +'').length )
+						$('#'+ v +' option[value*="'+urlSearch[''+ v +'']+'"]').attr('selected', true);
+				}else{
+					// preselect hour and minute
+					if(i == 3 )
+						var preselectTimer = jsSearch.find('select[id*="start"]').first();
+					else
+						var preselectTimer = jsSearch.find('select[id*="start"]').last();
+						
+					preselectTimer.find('option[value="'+ urlSearch[''+ v +''] +'"]').attr('selected',true);
+				}
+			});
 			filterFuc();
 		});
+		//END ajax call
 		
+		// filter logic
 		var filterFuc = function(){
 			var searchResult = $('#searchResult'),
 			allCourses = searchResult.find('tbody').children('tr');
 
-			allCourses.addClass('hidden');
 			// Catch submit and do filter
 			jsSearch.submit(function(){
-				searchResult.slideUp();
-				allCourses.addClass('hidden');
+				var dis	= $(this);
+				dis.attr('disable',true);
+				$('#showNoResult').addClass('hidden');
 				
-				var dis			= $(this),
-					style_id	= dis.find('#style_id').val(),
-					weekday		= dis.find('#weekday').val(),
-					time 		= '',
-					firstFilter = allCourses.filter('.'+ style_id +'.'+weekday);
+				searchResult.fadeOut(400,function(){
+					allCourses.addClass('hidden');
+					searchResult.removeClass('showAll');
 					
-				$.each(dis.find('#searchTime').children('select'),function(i,v){
-					return time += $(this).val();
-				});	
-				firstFilter.filter('.'+time).removeClass('hidden');
-				searchResult.slideDown(300);
-				return false
+					var	style_id	= ( dis.find('#style_id').val() != 'false' )? '.'+ dis.find('#style_id').val() : '',
+					weekday			= ( dis.find('#weekday').val() != 'false' )? '.'+ dis.find('#weekday').val() : '',
+					time 			= '',
+					firstFilter 	= allCourses.filter(style_id.replace(' ','') + weekday);
+
+					// console.log('searchword: ' + style_id.replace(' ','') + ' << ' +weekday )
+					
+					$.each(dis.find('#searchTime').children('select'),function(i,v){
+						return time += '.'+ $(this).val();
+					});
+							
+					if((style_id+weekday).length){
+						if(firstFilter.length){
+							// Filter matches courses
+							allCourses.filter(firstFilter).removeClass('hidden');
+							searchResult.fadeIn(400);
+						}else{
+							// No match for filter
+							$('#showNoResult').removeClass('hidden');
+							searchResult.hide();
+						}
+					}else{
+						// Show all filter
+						searchResult.addClass('showAll');
+						searchResult.fadeIn(400);
+					}
+				});
+				
+				dis.attr('disable',false);
+				return false;
 			});
 			//END jsSearch Click
 		};
-		//END function FIlter
+		//END function filterFuc
 	};	
-	//END activeSearch
+	//END function activeSearch
 	
 	// Turn on search if needed
 	if(jsSearch.length)

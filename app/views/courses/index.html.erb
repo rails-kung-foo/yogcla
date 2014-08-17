@@ -27,10 +27,10 @@
 			studioName = @studios.find_by(id: course.studio_id).name
 		%>
 			<% cache ['entry', course] do %> 	
-				<tr class=" <%= stil+' '+course.weekday+' '+course.start.sub(':', '') %>">
+				<tr class=" <%= stil.delete(' ')+' '+course.weekday+' '+course.start.sub(':', '') %>">
 					<td class=" <%= studioName.delete(' ')%>"><%=  link_to studioName,
 						studio_path(course.studio_id)  %></td>
-					<td class="textCapitalize <%= stil  %>" ><%= stil  %></td>
+					<td class="textCapitalize <%= stil.delete(' ')  %>" ><%= stil  %></td>
 					<td class=" <%= course.start%>"><%= course.start %></td>
 					<td class=" <%= course.end%>"><%= course.end %></td>
 					<td class="textCapitalize <%= course.weekday%>" ><%= course.weekday %></td>

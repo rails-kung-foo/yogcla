@@ -9,15 +9,20 @@ Done:
 - Admin area and restricted admin function
 - Added a terrific design ;D
 - Frontpage has now javascript based filter
+  - Improvet filter: separate search
+  
+
 
 
 TODO:
 - Course page with rails filter seach (tricky)
-- Javascript/rails filter improvement: Double name reduce to one for class; 
 - Deploy at Heroku or...!
 - Improve and add require strength password validation
 - JS filter:
 	- filter is after relaod functional issue (turbolink issue)
-	- Improve filter: option based filters (show all styles on monday)
+	- Add animation for height
+	- Add result count
+	- reAdd filter Time
+
 
 <tt>rake doc:app</tt>.
