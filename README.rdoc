@@ -24,6 +24,7 @@ Done:
 
 TODO:
 - Course page with rails filter seach (tricky)
+- Add Validation for new Course (time)
 - Deploy at Heroku or...!
 - Improve and add require strength password validation
 - JS filter:
