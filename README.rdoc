@@ -1,8 +1,16 @@
 == README
 
+http://yogcla.herokuapp.com/
+( needs ten seconds to start server )
+
 My second Rails app. Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art.  
 
 Of course the data is fake, this project helps me to learn and understand rails. :) 
+
+Run rake db:seed to fill the database.
+Admin log:
+name:		'admin'
+pw: 		'qwe123'
 
 Done: 
 - Relationships between classes
