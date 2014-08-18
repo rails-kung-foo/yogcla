@@ -32,6 +32,6 @@ TODO:
   - Add animation for height
   - Add result count
   - reAdd filter Time
-
+	- Ajax call loads part of secured session.
 
 <tt>rake doc:app</tt>.
