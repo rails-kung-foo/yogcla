@@ -25,7 +25,7 @@ Done:
 
 TODO:
 - Course page with rails filter seach (tricky)
-- Add Validation for new Course (time)
+- New Course View: Add info for Timer
 - Deploy at Heroku or...!
 - Add info for new admin view (lengt, special chars)
 - JS filter:
@@ -37,8 +37,8 @@ TODO:
 
 
 KW34
-- Improved admin password validation 
-
+- Admin Valdiation: Require strenght password valdiation 
+- Course Validation: Times Validation
 
 
 <tt>rake doc:app</tt>.
