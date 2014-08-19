@@ -8,6 +8,7 @@ My second Rails app. Find your yoga class in Berlin. Determine your search by ti
 Of course the data is fake, this project helps me to learn and understand rails. :) 
 
 Run rake db:seed to fill the database.
+
 Admin log:
 name:		'admin'
 pw: 		'qwe123'
@@ -21,7 +22,8 @@ Done:
   
 
 
-ToDo:
+
+TODO:
 - Course page with rails filter seach (tricky)
 - Add Validation for new Course (time)
 - Deploy at Heroku or...!
@@ -33,4 +35,10 @@ ToDo:
   - reAdd filter Time
   - Ajax call loads part of secured session.
 
+
+
+
+
+
 <tt>rake doc:app</tt>.
+
