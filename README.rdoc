@@ -27,7 +27,7 @@ TODO:
 - Course page with rails filter seach (tricky)
 - Add Validation for new Course (time)
 - Deploy at Heroku or...!
-- Improve and add require strength password validation
+- Add info for new admin view (lengt, special chars)
 - JS filter:
   - filter after reload functional issue (turbolink issue)
   - Add animation for height
@@ -36,7 +36,8 @@ TODO:
   - Ajax call loads part of secured session.
 
 
-
+KW34
+- Improved admin password validation 
 
 
 
