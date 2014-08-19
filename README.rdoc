@@ -35,8 +35,8 @@ TODO:
   - reAdd filter Time
   - Ajax call loads part of secured session.
 
-
-KW34
+Done in Calendar Week
+34:
 - Admin Valdiation: Require strenght password valdiation 
 - Course Validation: Times Validation
 
