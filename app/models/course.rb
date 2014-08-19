@@ -7,7 +7,11 @@ class Course < ActiveRecord::Base
   
 	include Trimmer
 	trimmed_fields :start, :end
-	validates :start, :end, presence: true
+	
+	
+	VALID_TIME = /(\d){2}[:](\d){2}/
+	validates :start, :end, presence: true, format:{ with: VALID_TIME },
+		 length:{ is: 5 }
   
 
 	
