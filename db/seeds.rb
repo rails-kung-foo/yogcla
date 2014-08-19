@@ -9,21 +9,17 @@ Admin.create!(
 	password: "qwe123"
 )
 # generate studios
-Studio.create!(
-	name: "Yellow Yoga",
-	address: %{ Mariannenstraße 48, 10997 Berlin },
-	url: "http://yellow-yoga.com/"
-)
-Studio.create!(
-	name: "Bikram Yoga Mitte",
-	address: %{ Neue Schönhauser Str. 19, 10178 Berlin },
-	url: "http://www.bikram-berlin.de/"
-)
-Studio.create!(
-	name: "SUN YOGA Friedrichshain" ,
-	address: %{ Torellstr. 7, 10243 Berlin },
-	url: "http://www.sunyoga.de/studio_friedrichshain.htm"
-)
+Studio.create!([
+	{ name: "Yellow Yoga",
+		address: %{ Mariannenstraße 48, 10997 Berlin },
+		url: "http://yellow-yoga.com/"},
+	{ name: "Bikram Yoga Mitte",
+		address: %{ Neue Schönhauser Str. 19, 10178 Berlin },
+		url: "http://www.bikram-berlin.de/"	},
+	{ name: "SUN YOGA Friedrichshain" ,
+		address: %{ Torellstr. 7, 10243 Berlin },
+		url: "http://www.sunyoga.de/studio_friedrichshain.htm" }
+])
 
 #generate styles
 
@@ -39,48 +35,50 @@ sy = Studio.find_by(name: "SUN YOGA Friedrichshain")
 allStyle = Style.all
 
 # Yellow Yoga Seed
-Course.create!(
+Course.create!([
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "ashtanga").id,
 	start: "07:00",
 	end: "08:30",
 	weekday: "monday"
-)
-Course.create!(
+},
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "vinyasa").id,
 	start: "09:00",
 	end: "10:00",
 	weekday: "monday"
-)
-Course.create!(
+},
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "vinyasa").id,
 	start: "10:30",
 	end: "11:45",
 	weekday: "monday"
-)
-Course.create!(
+},
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "hatha").id,
 	start: "12:15",
 	end: "13:30",
 	weekday: "monday"
-)
-Course.create!(
+},
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "kundalini").id,
 	start: "14:00",
 	end: "15:30",
 	weekday: "monday"
-)
-Course.create!(
+},
+{
 	studio_id: yy.id ,
 	style_id: allStyle.find_by(stil: "jivamukti").id,
 	start: "16:00",
 	end: "18:00",
 	weekday: "monday"
-)
+}])
+
 # tuesday
 Course.create!(
 	studio_id: yy.id ,

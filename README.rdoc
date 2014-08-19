@@ -21,8 +21,7 @@ Done:
   
 
 
-
-TODO:
+ToDo:
 - Course page with rails filter seach (tricky)
 - Add Validation for new Course (time)
 - Deploy at Heroku or...!
