@@ -9,7 +9,7 @@ Of course the data is fake, this project helps me to learn and understand rails.
 
 Run rake db:seed to fill the database.
 
-Admin log:
+Admin login:
 name:		'admin'
 pw: 		'qwe123'
 
