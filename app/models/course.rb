@@ -11,10 +11,7 @@ class Course < ActiveRecord::Base
 	
 	VALID_TIME = /(\d){2}[:](\d){2}/
 	validates :start, :end, presence: true, format:{ with: VALID_TIME },
-		 length:{ is: 5 }
-  
-
-	
+		 length:{ is: 5 }	
 	
 	
 	# Style.all.each do |x|

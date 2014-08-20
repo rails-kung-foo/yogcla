@@ -1,10 +1,10 @@
 module ApplicationHelper
-	
-	# set link active
+		# set link active
 	def is_active?(link_path)
 		current_page?(link_path) ? "active" : ""
 	end
-
+  
+	
 
 	
 	

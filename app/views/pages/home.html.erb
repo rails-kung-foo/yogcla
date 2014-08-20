@@ -11,12 +11,12 @@
 	  
 	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :weekday %><br>
-		<%= select_tag :weekday, options_for_select(Course::WEEKDAYS),class:'textCapitalize'   %>
+		<%= select_tag :weekday, options_for_select(['test',Course::WEEKDAYS]),class:'textCapitalize'   %>
 	  </div>
 	  
 	  <div id="searchTime" class="field textCapitalize col-md-3">
-		<%= label_tag :start %><br>
-		<%= time_select :start, params[:start], { minute_step: 15, ignore_date: true }   %>
+		<%= label_tag :start, 'course begins' %><br>
+		<%= select :start, params[:start], (06..22)   %>
 	  </div>
 	   <div  class="field textCapitalize col-md-3">
 		<%= submit_tag "Search", :name => nil %>
