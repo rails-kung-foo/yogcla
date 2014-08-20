@@ -18,12 +18,15 @@
 		<%= f.label :style_id %><br>
 		<%= f.select :style_id, GETSTYLES,{},class:'textCapitalize' %>
 	  </div>
+		<div>
+			Time form: HH:MM
+		</div>
 	  <div class="field">
-		<%= f.label :start %><br>
+		<%= f.label :start, 'Beginn of class' %><br>
 		<%= f.text_field :start %>
 	  </div>
 	  <div class="field">
-		<%= f.label :end %><br>
+		<%= f.label :end, 'End of class'  %><br>
 		<%= f.text_field :end %>
 	  </div>
 	  <div class="field textCapitalize">

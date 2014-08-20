@@ -25,9 +25,6 @@ Done:
 
 TODO:
 - Course page with rails filter seach (tricky)
-- New Course View: Add info for Timer
-- Deploy at Heroku or...!
-- Add info for new admin view (lengt, special chars)
 - JS filter:
   - filter after reload functional issue (turbolink issue)
   - Add animation for height
@@ -35,11 +32,14 @@ TODO:
   - reAdd filter Time
   - Ajax call loads part of secured session.
 
-Done in Calendar Week
-34:
-- Admin Valdiation: Require strenght password valdiation 
-- Course Validation: Times Validation
-
+Done in Calendar Week 34:
+- Admin:
+  - Valdiation: Require strenght password validation.
+	- New Admin: Information for password added.
+- Course:
+  - Validation: Times Validates now.
+	- New Class: Added time format information.
+- Deployed at Heroku.
 
 <tt>rake doc:app</tt>.
 
