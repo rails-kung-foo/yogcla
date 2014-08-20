@@ -18,7 +18,7 @@ Done:
 - Admin area and restricted admin function
 - Added a terrific design ;D
 - Frontpage has now javascript based filter
-  - Improvet filter: separate search
+  - Improved filter: separate search
   
 
 
