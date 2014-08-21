@@ -7,12 +7,13 @@ class CoursesController < ApplicationController
   def index
 		@studios = Studio.all
 		@styles = Style.all
+		@courses= Course.search_courses(params[:searchweekday])
 		
-		if params[:searchweekday]
-			@courses = Course.where(weekday: params[:searchweekday] )
-		else
-			@courses = Course.all
-		end	
+		#if params[:searchweekday]
+		#	@courses = Course.where(weekday: params[:searchweekday] )
+		#else
+		#	@courses = Course.all
+		#end	
 		
 	end
 

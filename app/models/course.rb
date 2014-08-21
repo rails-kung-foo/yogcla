@@ -21,7 +21,15 @@ class Course < ActiveRecord::Base
 		# GETSTUDIOS << x.name
 	# end
   
-  
+  # search logic
+	def self.search_courses(weekday) 
+		if weekday
+			where(weekday: weekday )
+		else
+			all
+		end	
+	end
+	
   # caching 
 	def self.latest
 		Course.order(:updated_at).last
