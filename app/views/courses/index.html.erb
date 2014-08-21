@@ -3,10 +3,10 @@
 <!-- rails search -->
 <%= form_for courses_path, method: :get do %>
 	<p>
-			<%= select_tag :searchstudio, options_for_select(Course::GETSTUDIOS), 		class:'textCapitalize'   %>	
+			<% #= select_tag :searchstudio, options_for_select(Course::GETSTUDIOS), 		class:'textCapitalize'   %>	
 	</p>
 	<p>
-		<%= select_tag :searchweekday, options_for_select(Course::WEEKDAYS), 		class:'textCapitalize'   %>	
+		<%= select_tag :searchweekday, options_for_select(Course::WEEKDAYS), class:'textCapitalize'   %>	
 	</p>
 	
 	<p><%= submit_tag "Search", name: nil %></p>

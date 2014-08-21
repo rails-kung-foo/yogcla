@@ -8,8 +8,8 @@ class CoursesController < ApplicationController
 		@studios = Studio.all
 		@styles = Style.all
 		
-		if params[:searchWeekday]
-			@courses = Course.where("weekday LIKE ?", "%"+params[:searchWeekday]+"%" )
+		if params[:searchweekday]
+			@courses = Course.where(weekday: params[:searchweekday] )
 		else
 			@courses = Course.all
 		end	
