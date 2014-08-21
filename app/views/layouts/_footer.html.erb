@@ -1,6 +1,9 @@
 	<footer>
 	  <div class="container">
 		<%= link_to 'Info', info_path, alt: 'Information', title: 'Information' %>
+		
+		<%= yield :footerText %>
+		
 		<div class="adminNav right">
 			<% unless session[:admin_id] %>
 				<%= link_to 'Admin Login', login_url, alt: 'Admin', title: 'Admin' %>
