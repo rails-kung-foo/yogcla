@@ -13,11 +13,10 @@ class Course < ActiveRecord::Base
 	validates :start, :end, presence: true, format:{ with: VALID_TIME },
 		 length:{ is: 5 }	
 	
-	
+	# -- CODE MOVED TO lib/formHelper.rb
 	# Style.all.each do |x|
 		# GETSTYLES << x.stil
 	# end
-	
 	# Studio.all.each do |x|
 		# GETSTUDIOS << x.name
 	# end
