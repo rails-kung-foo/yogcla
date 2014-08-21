@@ -7,10 +7,6 @@
 
 $(function() {
 
-	// Hide filter for disabled js
-	$('body').removeClass('jsOff');
-	
-	
 	var jsSearch = $('#jsSearch'),
 	activatedSearch = function(){	
 		// search function start
@@ -126,6 +122,9 @@ $(function() {
 			//END jsSearch Click
 		};
 		//END function filterFuc
+	
+		// Hide filter for disabled js
+		$('body').removeClass('jsOff');
 	};	
 	//END function activeSearch
 	
