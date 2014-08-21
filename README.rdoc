@@ -24,6 +24,7 @@ Done:
 
 
 TODO:
+- Deploy new version at Heroku (some issues)
 - Course page with rails filter seach (tricky)
 - JS filter:
   - filter after reload functional issue (turbolink issue)
@@ -31,6 +32,8 @@ TODO:
   - Add result count
   - reAdd filter Time
   - Ajax call loads part of secured session.
+	- change load to json
+	- refactor preselector for time
 
 Done in Calendar Week 34:
 - Admin:
@@ -39,7 +42,7 @@ Done in Calendar Week 34:
 - Course:
   - Validation: Times Validates now.
   - New Class: Added time format information.
-- Deployed at Heroku.
+
 
 <tt>rake doc:app</tt>.
 

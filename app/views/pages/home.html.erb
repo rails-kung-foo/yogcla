@@ -11,7 +11,7 @@
 	  
 	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :weekday %><br>
-		<%= select_tag :weekday, options_for_select(['test',Course::WEEKDAYS]),class:'textCapitalize'   %>
+		<%= select_tag :weekday, options_for_select(Course::WEEKDAYS),class:'textCapitalize'   %>
 	  </div>
 	  
 	  <div id="searchTime" class="field textCapitalize col-md-3">

@@ -34,14 +34,13 @@ $(function() {
 		
 		// build filter;
 		newAjax.success(function(aData){
-			var data = $('table',aData).first(),
-			optionStyle = $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
-			optionWeekday = $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
-			noResult = $(document.createElement('p')).text('No Result').prop('id','showNoResult').addClass('hidden'),
+			var data 			= $('table',aData).first(),
+			optionShowAll	= $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
+			noResult 			= $(document.createElement('p')).text('No Result').prop('id','showNoResult').addClass('hidden'),
 			timeTabelWrap = $(document.createElement('div')).css({overflow:'hidden',});
 			
-			$('#style_id').prepend(optionStyle);
-			$('#weekday').prepend(optionWeekday);
+			$('#style_id').prepend(optionShowAll.clone());
+			$('#weekday').prepend(optionShowAll.clone());
 			
 			timeTabelWrap.prop('id','searchResult').append(data);
 			jsSearch.after(timeTabelWrap, noResult);
@@ -51,6 +50,7 @@ $(function() {
 			$.each(urlSearch,function(i,v){	
 					
 				// Check if value existing
+				// Time filter changed; needs refactoring
 				if( !v )
 					return false;
 
@@ -70,6 +70,9 @@ $(function() {
 				}
 			});
 			filterFuc();
+			
+			// Hide filter for disabled js
+			$('body').removeClass('jsOff');
 		});
 		//END ajax call
 		
@@ -123,8 +126,6 @@ $(function() {
 		};
 		//END function filterFuc
 	
-		// Hide filter for disabled js
-		$('body').removeClass('jsOff');
 	};	
 	//END function activeSearch
 	

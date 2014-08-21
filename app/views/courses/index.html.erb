@@ -1,13 +1,22 @@
 <h1>Listing courses</h1>
 
-<%= form_tag courses_path, method:'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
+<!-- rails search -->
+<%= form_for courses_path, method: :get do %>
+	<p>
+		<%= text_field_tag :searchText, params[:searchText] %>
+	</p>
+	<p>
+		<%= select_tag :searchWeekday, options_for_select(Course::WEEKDAYS), 		class:'textCapitalize'   %>	
+	</p>
+	
+	<p><%= submit_tag "Search", name: nil %></p>
+	<%= link_to 'Reset Search', courses_path %>
 <% end %>
+<!-- END rails search -->
+
 
 	<%= link_to 'New Course', new_course_path, class: "right"  if session[:admin_id]%>
+	
 <table class="table table-striped">
   <thead>
     <tr>

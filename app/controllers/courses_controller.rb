@@ -5,10 +5,15 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-		@courses = Course.all
-		@courses ||= @courses.find_by("name like ?",  params[:search])
 		@studios = Studio.all
 		@styles = Style.all
+		
+		if params[:searchWeekday]
+			@courses = Course.where("weekday LIKE ?", "%"+params[:searchWeekday]+"%" )
+		else
+			@courses = Course.all
+		end	
+		
 	end
 
   # GET /courses/1
@@ -32,8 +37,8 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-	@course.studio_id = Studio.find_by(name: course_params[:studio_id]).id
-	@course.style_id = Style.find_by(stil: course_params[:style_id]).id
+		@course.studio_id = Studio.find_by(name: course_params[:studio_id]).id
+		@course.style_id = Style.find_by(stil: course_params[:style_id]).id
     
 	respond_to do |format|
       if @course.save
