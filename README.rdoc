@@ -5,7 +5,7 @@ http://yogcla.herokuapp.com/
 
 This is my second Rails app. Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art.  
 - I build a JS filter for the home page
-- In the Course page, i will build a filter based on rails. 
+- For the course page, I will build a filter based on ruby/rails. 
  
 Of course the data is fake, this project helps me to learn and understand rails. :) 
 
