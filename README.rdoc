@@ -34,10 +34,10 @@ TODO:
 Done in Calendar Week 34:
 - Admin:
   - Valdiation: Require strenght password validation.
-  - New Admin: Information for password added.
+  - New Admin: Information for proper validation password added.
 - Course:
   - Validation: Times Validates now.
-  - New Class: Added time format information.
+  - layout new: Information for the proper validation time format added.
 
 - JS filter:
   - Script load after refresh (turbolink issue)
