@@ -40,7 +40,7 @@ Done in Calendar Week 34:
   - layout new: Information for the proper validation time format added.
 
 - JS filter:
-  - Script load after refresh (turbolink issue)
+  - Script loads after refresh (turbolink issue)
   - Filter with time added
 
 <tt>rake doc:app</tt>.
