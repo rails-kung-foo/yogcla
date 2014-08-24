@@ -5,8 +5,7 @@
 *		
 */	
 
-$(function() {
-
+var pageLoadReady = function(){
 	var jsSearch = $('#jsSearch'),
 	activatedSearch = function(){	
 		// search function start
@@ -131,7 +130,7 @@ $(function() {
 	
 	// Turn on search if needed
 	if(jsSearch.length)
-		activatedSearch();
-		
-});
-
+		activatedSearch();	
+};
+$(document).ready(pageLoadReady);
+$(document).on('page:load', pageLoadReady);
