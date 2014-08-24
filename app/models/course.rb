@@ -1,5 +1,5 @@
 require 'trimmer'
-require 'formHelper'
+# require 'formHelper'
 class Course < ActiveRecord::Base
 	# Gatekeeper, man the door!
   belongs_to :studio
@@ -20,11 +20,15 @@ class Course < ActiveRecord::Base
 	# Studio.all.each do |x|
 		# GETSTUDIOS << x.name
 	# end
-  
-  # search logic
+   
+	# search logic
 	def self.search_courses(weekday) 
 		if weekday
-			where(weekday: weekday )
+			if weekday !=  "Select All" 
+				where(weekday: weekday )
+			else
+				all
+			end
 		else
 			all
 		end	

@@ -6,12 +6,12 @@
 	
 	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :style_id %><br>
-		<%= select_tag :style_id,options_for_select(Course::GETSTYLES),class:'textCapitalize'   %>
+		<%= select_tag :style_id,options_for_select(ApplicationHelper::GETSTYLES),class:'textCapitalize'   %>
 	  </div>
 	  
 	  <div class="field textCapitalize col-md-3">
 		<%= label_tag :weekday %><br>
-		<%= select_tag :weekday, options_for_select(Course::WEEKDAYS),class:'textCapitalize'   %>
+		<%= select_tag :weekday, options_for_select(ApplicationHelper::WEEKDAYS),class:'textCapitalize'   %>
 	  </div>
 	  
 	  <div id="searchTime" class="field textCapitalize col-md-3">

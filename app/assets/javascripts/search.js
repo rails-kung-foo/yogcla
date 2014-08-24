@@ -103,8 +103,7 @@ var pageLoadReady = function(){
 
 					firstFilter 	= allCourses.filter(style_id.replace(' ','') + weekday + time);
 					
-					console.log('time: ' + time +' length: '+ time.length );
-					console.log( firstFilter );
+					//console.log( firstFilter );
 					
 					if( (style_id+weekday+time).length ){
 						if(firstFilter.length){
@@ -122,7 +121,6 @@ var pageLoadReady = function(){
 						searchResult.addClass('showAll');
 						searchResult.fadeIn(400);
 					}
-					console.log('length of filterword: ' + (style_id+weekday+time).length  + ' content of filter: ' + (style_id+weekday+time) );
 				});
 				
 				dis.attr('disable',false);

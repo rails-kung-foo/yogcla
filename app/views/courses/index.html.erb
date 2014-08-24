@@ -1,12 +1,15 @@
 <h1>Listing courses</h1>
-
+<%= params.inspect %>
 <!-- rails search -->
 <%= form_for courses_path, method: :get do %>
 	<p>
-			<% #= select_tag :searchstudio, options_for_select(Course::GETSTUDIOS), 		class:'textCapitalize'   %>	
+	  <% #= select_tag :searchstudio, options_for_select(prepare_form('studio')), class:'textCapitalize'   %>	
 	</p>
 	<p>
-		<%= select_tag :searchweekday, options_for_select(Course::WEEKDAYS), class:'textCapitalize'   %>	
+	  <% #= select_tag :searchstyle, options_for_select(prepare_form('style')), class:'textCapitalize'   %>	
+	</p>
+	<p>
+	  <%= select_tag :searchweekday, options_for_select(prepare_form('weekday')), class:'textCapitalize'   %>	
 	</p>
 	
 	<p><%= submit_tag "Search", name: nil %></p>
