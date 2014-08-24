@@ -33,13 +33,14 @@ var pageLoadReady = function(){
 		
 		// build filter;
 		newAjax.success(function(aData){
-			var data 			= $('table',aData).first(),
+			var data		= $('table',aData).first(),
 			optionShowAll	= $(document.createElement('option')).val(false).text('Show All').attr('selected',true),
-			noResult 			= $(document.createElement('p')).text('No Result').prop('id','showNoResult').addClass('hidden'),
-			timeTabelWrap = $(document.createElement('div')).css({overflow:'hidden',});
+			noResult 		= $(document.createElement('p')).text('No Result').prop('id','showNoResult').addClass('hidden'),
+			timeTabelWrap 	= $(document.createElement('div')).css({overflow:'hidden',});
 			
 			$('#style_id').prepend(optionShowAll.clone());
 			$('#weekday').prepend(optionShowAll.clone());
+			$('#searchTime select').prepend(optionShowAll.clone());
 			
 			timeTabelWrap.prop('id','searchResult').append(data);
 			jsSearch.after(timeTabelWrap, noResult);
@@ -70,7 +71,7 @@ var pageLoadReady = function(){
 			});
 			filterFuc();
 			
-			// Hide filter for disabled js
+			// Show filter for activated JS
 			$('body').removeClass('jsOff');
 		});
 		//END ajax call
@@ -90,18 +91,22 @@ var pageLoadReady = function(){
 					allCourses.addClass('hidden');
 					searchResult.removeClass('showAll');
 					
+					// Find active filter
 					var	style_id	= ( dis.find('#style_id').val() != 'false' )? '.'+ dis.find('#style_id').val() : '',
 					weekday			= ( dis.find('#weekday').val() != 'false' )? '.'+ dis.find('#weekday').val() : '',
-					time 			= '',
-					firstFilter 	= allCourses.filter(style_id.replace(' ','') + weekday);
+					time 			= ( dis.find('#searchTime select').val() != 'false' )? dis.find('#searchTime select').val() : '';
 
-					// console.log('searchword: ' + style_id.replace(' ','') + ' << ' +weekday )
+					if ( time.length == 1 )
+						time = '.time0'+ time.toString();
+					else if( time.length == 2 )
+						time = '.time'+ time.toString();
+
+					firstFilter 	= allCourses.filter(style_id.replace(' ','') + weekday + time);
 					
-					$.each(dis.find('#searchTime').children('select'),function(i,v){
-						return time += '.'+ $(this).val();
-					});
-							
-					if((style_id+weekday).length){
+					console.log('time: ' + time +' length: '+ time.length );
+					console.log( firstFilter );
+					
+					if( (style_id+weekday+time).length ){
 						if(firstFilter.length){
 							// Filter matches courses
 							allCourses.filter(firstFilter).removeClass('hidden');
@@ -111,11 +116,13 @@ var pageLoadReady = function(){
 							$('#showNoResult').removeClass('hidden');
 							searchResult.hide();
 						}
+						
 					}else{
 						// Show all filter
 						searchResult.addClass('showAll');
 						searchResult.fadeIn(400);
 					}
+					console.log('length of filterword: ' + (style_id+weekday+time).length  + ' content of filter: ' + (style_id+weekday+time) );
 				});
 				
 				dis.attr('disable',false);

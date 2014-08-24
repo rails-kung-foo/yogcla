@@ -29,10 +29,8 @@ TODO:
 - JS filter:
   - Add animation for height
   - Add result count
-  - reAdd filter Time
-  - Ajax call loads part of secured session.
-  - change load to json
-  - refactor preselector for time
+  - Ajax call loads part of secured session? (still there?)
+  - change ajax call with json
 
 Done in Calendar Week 34:
 - Admin:
@@ -44,6 +42,7 @@ Done in Calendar Week 34:
 
 - JS filter:
   - Script load after refresh (turbolink issue)
+  - Filter with time added
 
 <tt>rake doc:app</tt>.
 
