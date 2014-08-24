@@ -32,8 +32,8 @@ TODO:
   - Add result count
   - reAdd filter Time
   - Ajax call loads part of secured session.
-	- change load to json
-	- refactor preselector for time
+  - change load to json
+  - refactor preselector for time
 
 Done in Calendar Week 34:
 - Admin:
@@ -43,6 +43,7 @@ Done in Calendar Week 34:
   - Validation: Times Validates now.
   - New Class: Added time format information.
 
+-
 
 <tt>rake doc:app</tt>.
 
