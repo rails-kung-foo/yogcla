@@ -27,7 +27,6 @@ TODO:
 - Deploy new version at Heroku (some issues)
 - Course page with rails filter seach (tricky)
 - JS filter:
-  - filter after reload functional issue (turbolink issue)
   - Add animation for height
   - Add result count
   - reAdd filter Time
@@ -43,7 +42,8 @@ Done in Calendar Week 34:
   - Validation: Times Validates now.
   - New Class: Added time format information.
 
--
+- JS filter:
+  - Script load after refresh (turbolink issue)
 
 <tt>rake doc:app</tt>.
 
