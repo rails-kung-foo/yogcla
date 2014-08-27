@@ -77,7 +77,9 @@ body {
 			position: relative;
 			margin: auto;
 			
-
+			input[type="submit"] {
+				margin: 19px 0 0 0;
+			}
 			>div {
 				float: left;
 				margin: 5px;
