@@ -34,6 +34,7 @@ class Course < ActiveRecord::Base
 		end	
 	end
 	
+	
   # caching 
 	def self.latest
 		Course.order(:updated_at).last
