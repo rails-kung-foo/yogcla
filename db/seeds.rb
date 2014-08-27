@@ -6,7 +6,7 @@ Course.delete_all
 # Generate Admin
 Admin.create!(
 	name: "admin",
-	password: "qwe123"
+	password: "qwe123!"
 )
 # generate studios
 Studio.create!([
