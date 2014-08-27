@@ -106,14 +106,14 @@ body {
 				width: 465px;
 			}
 		}
-		@media all and (min-width: 650px)  {
-			#searchResult {
-				margin: auto;
-				width: 600px;
-			}
+
+	}
+	@media all and (min-width: 650px)  {
+		#searchResult {
+			margin: auto;
+			width: 600px;
 		}
 	}
-	
 	footer {
 		z-index: 1;
 		position: fixed;
