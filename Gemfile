@@ -3,13 +3,15 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 source 'https://rubygems.org'
-group :production do
   ruby '2.0.0'
+#  ruby '1.9.3'
+group :production do
+
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 group :development, :test do
-	ruby '1.9.3'
+
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
 end
