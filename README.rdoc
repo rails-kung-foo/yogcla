@@ -13,7 +13,7 @@ Run rake db:seed to fill the database.
 
 Admin login:
 name:		'admin'
-pw: 		'qwe123'
+pw: 		'qwe123!'
 
 Done: 
 - Relationships between classes
