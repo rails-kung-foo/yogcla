@@ -24,6 +24,7 @@ Initial:
   
 TODO:
 - Course page with rails filter search (tricky)
+  - Production: rails search not functional
 - JS filter:
   - Add animation for height
   - Add result count
