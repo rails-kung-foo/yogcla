@@ -15,7 +15,7 @@ Admin login:
 name:		'admin'
 pw: 		'qwe123!'
 
-Done: 
+Initial: 
 - Relationships between classes
 - Admin area and restricted admin function
 - Added a terrific design ;D
@@ -23,13 +23,16 @@ Done:
   - Improved filter: separate search
   
 TODO:
-- Deploy new version at Heroku (some issues)
-- Course page with rails filter seach (tricky)
+- Course page with rails filter search (tricky)
 - JS filter:
   - Add animation for height
   - Add result count
   - Ajax call loads part of secured session? (still there?)
   - change ajax call with json
+  
+Done in Calendar Week 35:
+- Deployed new version at Heroku (after some resolving of problems :) )
+- Basic rails search http://yogcla.herokuapp.com/courses
 
 Done in Calendar Week 34:
 - Admin:
