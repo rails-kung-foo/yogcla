@@ -1,5 +1,8 @@
 == README
 
+Update 22.5.2015
+ Not working on this app anymore.
+
 http://yogcla.herokuapp.com/
 ( Server needs ten seconds to start )
 
