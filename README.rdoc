@@ -22,7 +22,7 @@ Initial:
   - Improved filter: separate search
   
 TODO:
-- Course page with rails filter search
+- Course page: Filters.
   - Production: rails search not functional
 - JS filter:
   - Add animation for height
@@ -30,6 +30,7 @@ TODO:
   - Ajax call loads part of secured session? (still there?)
   - change ajax call with json
   
+2014  
 Done in Calendar Week 35:
 - Deployed new version at Heroku (after resolving of problems )
 - Basic rails search http://yogcla.herokuapp.com/courses
