@@ -1,20 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :check_admin, only: [:edit, :update,:destroy, :new]
-  
+
   # GET /courses
   # GET /courses.json
   def index
-		@studios	= Studio.all
-		@styles		= Style.all
-		@courses	= Course.search_courses(params[:searchweekday]) 
-		
-		#if params[:searchweekday]
-		#	@courses = Course.where(weekday: params[:searchweekday] )
-		#else
-		#	@courses = Course.all
-		#end	
-		
+		@courses	= Course.search_by(params[:searchweekday], params[:searchstyle], params[:searchstudio])
 	end
 
   # GET /courses/1
@@ -40,7 +31,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 		@course.studio_id = Studio.find_by(name: course_params[:studio_id]).id
 		@course.style_id = Style.find_by(stil: course_params[:style_id]).id
-    
+
 	respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice:"Course was successfully created." }

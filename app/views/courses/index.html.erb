@@ -3,23 +3,25 @@
 <!-- rails search -->
 <%= form_for courses_path, method: :get do %>
 	<p>
-	  <% #= select_tag :searchstudio, options_for_select(prepare_form('studio')), class:'textCapitalize'   %>	
+	  <%= select_tag :searchstudio, options_for_select(prepare_form('GETSTUDIOS')), class:'textCapitalize'   %>
 	</p>
 	<p>
-	  <% #= select_tag :searchstyle, options_for_select(prepare_form('style')), class:'textCapitalize'   %>	
+	  <%= select_tag :searchstyle, options_for_select(prepare_form('GETSTYLES')), class:'textCapitalize'   %>
 	</p>
 	<p>
-	  <%= select_tag :searchweekday, options_for_select(prepare_form('weekday')), class:'textCapitalize'   %>	
+	  <%= select_tag :searchweekday, options_for_select(prepare_form('WEEKDAYS')), class:'textCapitalize'   %>
 	</p>
-	
+
 	<p><%= submit_tag "Search", name: nil %></p>
 	<%= link_to 'Reset Search', courses_path %>
 <% end %>
 <!-- END rails search -->
 
-
+<p>
+	<%= @courses.count %>
+</p>
 	<%= link_to 'New Course', new_course_path, class: "right"  if session[:admin_id]%>
-	
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -33,12 +35,12 @@
   </thead>
 
   <tbody>
-    <% cache ['storeCourse', Course.latest] do %> 
+    <% cache ['storeCourse', Course.latest] do %>
 		<% @courses.each do |course|
-			stil = @styles.find_by(id: course.style_id).stil
-			studioName = @studios.find_by(id: course.studio_id).name
+			stil = course.style.stil
+			studioName = course.studio.name
 		%>
-			<% cache ['entry', course] do %> 	
+			<% cache ['entry', course] do %>
 				<tr class=" <%= stil.delete(' ')+' '+course.weekday+' time'+course.start.sub(/:\w*/, '') %>">
 					<td class=" <%= studioName.delete(' ')%>"><%=  link_to studioName,
 						studio_path(course.studio_id)  %></td>
