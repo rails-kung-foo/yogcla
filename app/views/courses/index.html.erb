@@ -3,13 +3,13 @@
 <!-- rails search -->
 <%= form_for courses_path, method: :get do %>
 	<p>
-	  <%= select_tag :searchstudio, options_for_select(prepare_form('GETSTUDIOS'),  params[:searchstudio]), class:'textCapitalize'   %>
+	  <%= select_tag :filter_studio, options_for_select(prepare_form('GETSTUDIOS'),  params[:filter_studio]), class:'textCapitalize'   %>
 	</p>
 	<p>
-	  <%= select_tag :searchstyle, options_for_select(prepare_form('GETSTYLES'), params[:searchstyle]), class:'textCapitalize'   %>
+	  <%= select_tag :filter_style, options_for_select(prepare_form('GETSTYLES'), params[:filter_style]), class:'textCapitalize'   %>
 	</p>
 	<p>
-	  <%= select_tag :searchweekday, options_for_select(prepare_form('WEEKDAYS'), params[:searchweekday]), class:'textCapitalize'   %>
+	  <%= select_tag :filter_weekday, options_for_select(prepare_form('WEEKDAYS'), params[:filter_weekday]), class:'textCapitalize'   %>
 	</p>
 
 	<p><%= submit_tag "Search", name: nil %></p>

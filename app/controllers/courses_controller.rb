@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-		@courses	= Course.search_by(params[:searchweekday], params[:searchstyle], params[:searchstudio])
+		@courses	= Course.search_by(params[:filter_weekday], params[:filter_style], params[:filter_studio])
 	end
 
   # GET /courses/1
