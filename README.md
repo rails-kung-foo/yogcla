@@ -21,7 +21,7 @@ Initial:
 - Frontpage has now javascript based filter
   - Improved filter: separate search
 
-TODO:
+## TODO
 - Rspec tests
 
 JS filter:
@@ -30,15 +30,19 @@ JS filter:
  - Ajax call loads part of secured session? (still there?)
  - Change ajax call for json
 
+## Update History
+
 2015
-Done:
+
+Week 25:
   - Basic filter for Course page to filter by attributes.
 
 2014
-Done in Calendar Week 35:
+
+Week 35:
 - Deployed new version at Heroku (after resolving of problems )
 
-Done in Calendar Week 34:
+Week 34:
 
 Admin:
 - Valdiation: Require strenght password validation.
