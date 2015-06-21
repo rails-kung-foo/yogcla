@@ -11,10 +11,10 @@ This is my first Rails app. Find your yoga class in Berlin. Determine your searc
 - Run `rake db:setup` to prepare DB and fill it with dara from seed.
 
 Admin login:
-name:		'admin'
-pw: 		'qwe123!'
+- name:		'admin'
+- pw: 		'qwe123!'
 
-Initial:
+#### Initial:
 - Relationships between classes
 - Admin area and restricted admin function
 - Added a terrific design
@@ -35,7 +35,7 @@ JS filter:
 2015
 
 Week 25:
-  - Basic filter for Course page to filter by attributes.
+  - Basic filter for Course page to filter by attributes, through relationships.
 
 2014
 
