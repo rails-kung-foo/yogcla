@@ -47,7 +47,11 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
-      if @course.update(course_params)
+      @course.assign_attributes course_params
+      @course.assign_attributes studio_id: Studio.find_by(name: course_params[:studio_id]).id,
+        style_id: Style.find_by(stil: course_params[:style_id]).id
+
+      if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
