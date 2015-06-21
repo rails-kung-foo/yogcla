@@ -21,7 +21,7 @@ module ApplicationHelper
 
 	# add show all option
 	def prepare_form(type)
-		options_list = Kernel.const_get("ApplicationHelper::#{type}")
+		options_list = Kernel.const_get("ApplicationHelper::#{ type }").clone
 		options_list = options_list.unshift('Select All')
 		options_list
 	end
