@@ -3,7 +3,7 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 source 'https://rubygems.org'
-  ruby '2.0.0'
+  ruby '2.2.0'
 group :production do
 
   gem 'pg', '0.15.1'
@@ -54,4 +54,3 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'autoprefixer-rails'
 gem 'sprockets', '2.11.0'
-
