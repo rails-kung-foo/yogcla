@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   before_action :check_admin
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
-  
+
   # GET /admins
   # GET /admins.json
   def index
@@ -56,9 +56,16 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin.destroy
+    begin
+      @admin.destroy
+      flash[:notice] = 'Admin was successfully destroyed.'
+
+    rescue StandardError => e
+      flash[:notice] = e.message
+    end
+
     respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to admins_url }
       format.json { head :no_content }
     end
   end
