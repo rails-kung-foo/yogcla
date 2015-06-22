@@ -52,7 +52,9 @@ gem 'sprockets', '2.11.0'
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
-  
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
 end
