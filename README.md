@@ -9,6 +9,7 @@ This is my first Rails app. Find your yoga class in Berlin. Determine your searc
 ## Installation
 - Clone repo and run `bundle install`
 - Run `rake db:setup` to prepare DB and fill it with dara from seed.
+- Run `rspec spec/` for tests.
 
 Admin login:
 - name:		'admin'
@@ -33,6 +34,10 @@ JS filter:
 ## Update History
 
 2015
+
+Week 26:
+  - Rspec and test gem added.
+  - First specs for model style included.
 
 Week 25:
   - Basic filter for Course page to filter by attributes, through relationships.
