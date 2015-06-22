@@ -5,7 +5,7 @@ class Style < ActiveRecord::Base
 	before_create :downcase_field
 
 	trimmed_fields :stil
-	validates :stil, presence: true
+	validates :stil, presence: true, uniqueness: true
 
 	scope :by_stil, -> (stil){ where('stil = ?', stil) }
 
