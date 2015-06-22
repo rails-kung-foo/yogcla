@@ -1,6 +1,6 @@
 # README
 
-This is my first Rails app. Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art.
+Find your yoga class in Berlin. Determine your search by time, weekday and your favourite yoga art.
 
 - Frontpage has JS filter
 - Coursepage has ruby filter
@@ -8,7 +8,7 @@ This is my first Rails app. Find your yoga class in Berlin. Determine your searc
 
 ## Installation
 - Clone repo and run `bundle install`
-- Run `rake db:setup` to prepare DB and fill it with dara from seed.
+- Run `rake db:setup` to prepare DB and fill it with data from seed.
 - Run `rspec spec/` for tests.
 
 Admin login:
@@ -45,19 +45,19 @@ Week 25:
 2014
 
 Week 35:
-- Deployed new version at Heroku (after resolving of problems )
+- New version deployed.
 
 Week 34:
 
 Admin:
-- Valdiation: Require strenght password validation.
-- New Admin: Information for proper validation password added.
+- Valdiation: Require strenght password.
+
 Course:
 - Validation: Times Validates now.
 - layout new: Information for the proper validation time format added.
 
 JS filter:
  - Script loads after refresh (turbolink issue)
- - Filter with time added
+ - Filter for time added
 
 <tt>rake doc:app</tt>.
