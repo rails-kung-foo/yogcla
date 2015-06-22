@@ -11,7 +11,7 @@ class Studio < ActiveRecord::Base
 
 	# caching
 	def self.latest
-		Studio.order(:updated_at).last
+		order(:updated_at).last
 	end
 
 end

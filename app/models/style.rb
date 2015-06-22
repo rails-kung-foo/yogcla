@@ -9,15 +9,13 @@ class Style < ActiveRecord::Base
 
 	scope :by_stil, -> (stil){ where('stil = ?', stil) }
 
-
-
-  private
 	# case down
 	def downcase_field
       self.stil.downcase!
     end
+
 	# caching
 	def self.latest
-		Style.order(:updated_at).last
+		order(:updated_at).last
 	end
 end
