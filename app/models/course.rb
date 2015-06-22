@@ -1,11 +1,9 @@
-require 'trimmer'
-# require 'formHelper'
 class Course < ActiveRecord::Base
-	# Gatekeeper, man the door!
+  include Trimmer
+
   belongs_to :studio
   belongs_to :style
 
-	include Trimmer
 	trimmed_fields :start, :end
 
 	# Validate time to bbe HH:MM

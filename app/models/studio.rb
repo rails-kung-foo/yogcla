@@ -1,9 +1,8 @@
-require 'trimmer'
 class Studio < ActiveRecord::Base
-	# Gatekeeper, man the door!
+	include Trimmer
+
 	has_many :courses, dependent: :destroy
 
-	include Trimmer
 	trimmed_fields :name, :address, :url
 
 	validates :name, :address, presence: true

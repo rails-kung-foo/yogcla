@@ -1,10 +1,8 @@
-require 'trimmer'
 class Style < ActiveRecord::Base
-	# Gatekeeper, man the door!
+	include Trimmer
+
 	has_many :courses, dependent: :destroy
 	before_create :downcase_field
-
-	include Trimmer
 
 	trimmed_fields :stil
 	validates :stil, presence: true
