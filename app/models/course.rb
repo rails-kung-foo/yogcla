@@ -35,6 +35,14 @@ class Course < ActiveRecord::Base
     result
 	end
 
+  def studio_name
+    studio.name
+  end
+
+  def style_name
+    style.stil
+  end
+
   # caching
 	def self.latest
 		order(:updated_at).last

@@ -36,15 +36,12 @@
 
   <tbody>
     <% cache ['storeCourse', Course.latest] do %>
-		<% @courses.each do |course|
-			stil = course.style.stil
-			studioName = course.studio.name
-		%>
+		<% @courses.each do |course| %>
 			<% cache ['entry', course] do %>
-				<tr class=" <%= stil.delete(' ')+' '+course.weekday+' time'+course.start.sub(/:\w*/, '') %>">
-					<td class=" <%= studioName.delete(' ')%>"><%=  link_to studioName,
+				<tr class=" <%= course.style_name.delete(' ')+' '+course.weekday+' time'+course.start.sub(/:\w*/, '') %>">
+					<td class=" <%= course.studio_name.delete(' ')%>"><%=  link_to course.studio_name,
 						studio_path(course.studio_id)  %></td>
-					<td class="textCapitalize <%= stil.delete(' ')  %>" ><%= stil  %></td>
+					<td class="textCapitalize <%= course.style_name.delete(' ')  %>" ><%= course.style_name  %></td>
 					<td class=" <%= course.start%>"><%= course.start %></td>
 					<td class=" <%= course.end%>"><%= course.end %></td>
 					<td class="textCapitalize <%= course.weekday%>" ><%= course.weekday %></td>
