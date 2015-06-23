@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Style, type: :model do
-  it "it downcases the stil" do
+  it "downcases the stil" do
     style_name = 'BIKRaM'
     style = create(:style, stil: style_name)
     expect(style.stil).to eq style_name.downcase
@@ -29,7 +29,7 @@ RSpec.describe Style, type: :model do
     end
   end
 
-  describe "methods" do
+  describe "Methods" do
     before :each do
       @first = create(:style)
       @second = create(:style, stil: 'zen')
