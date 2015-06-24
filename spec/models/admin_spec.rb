@@ -3,7 +3,23 @@ require 'rails_helper'
 RSpec.describe Admin, type: :model do
   let(:valid_admin){ create(:admin) }
   let(:build_admin){ build(:admin) }
-  
+
+  describe "Before creates record" do
+    context "trimms field" do
+      it "name" do
+        build_admin.name = " admin "
+        build_admin.save
+        expect(build_admin.name).to eq 'admin'
+      end
+
+      it "password" do
+        build_admin.name = " 123qwe! "
+        build_admin.save
+        expect(build_admin.name).to eq '123qwe!'
+      end
+    end
+  end
+
   describe "Validation" do
     context "with valid factory" do
       it "is valid" do
@@ -52,7 +68,7 @@ RSpec.describe Admin, type: :model do
           expect(build_admin).to be_invalid
         end
 
-        it "has erros message" do
+        it "has erros message: 'has already been taken'" do
           expect(build_admin.errors.messages[:name]).to include 'has already been taken'
         end
       end
@@ -82,6 +98,19 @@ RSpec.describe Admin, type: :model do
         it "error message is present" do
           short_password.valid?
           expect(short_password.errors.messages[:password]).to be_present
+        end
+      end
+
+      context "is to long" do
+        let(:long_password){ build(:admin, password: "#{ 'a' * 20 }12!") }
+
+        it "it is invalid" do
+          expect(long_password).to be_invalid
+        end
+
+        it "starts with error message: 'is too long...'" do
+          long_password.valid?
+          expect(long_password.errors.messages[:password]).to start_with /is too long/
         end
       end
 
