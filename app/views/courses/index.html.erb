@@ -43,7 +43,7 @@
 						studio_path(course.studio_id)  %></td>
 					<td class="textCapitalize <%= course.style_name.delete(' ')  %>" ><%= course.style_name  %></td>
 					<td class=" <%= course.start%>"><%= course.start %></td>
-					<td class=" <%= course.end%>"><%= course.end %></td>
+					<td class=" <%= course.ending%>"><%= course.ending %></td>
 					<td class="textCapitalize <%= course.weekday%>" ><%= course.weekday %></td>
 					<% if session[:admin_id]%>
 						<td><%= link_to 'Show', course, class: 'btn btn-default btn-xs' %></td>

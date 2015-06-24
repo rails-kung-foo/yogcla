@@ -4,11 +4,11 @@ class Course < ActiveRecord::Base
   belongs_to :studio
   belongs_to :style
 
-	trimmed_fields :start, :end
+	trimmed_fields :start, :ending
 
 	# Validate time to bbe HH:MM
 	VALID_TIME = /([0-1][0-9]||[2][0-3]):[0-5][0-9]/
-	validates :start, :end, presence: true, format:{ with: VALID_TIME },
+	validates :start, :ending, presence: true, format:{ with: VALID_TIME },
 		 length:{ is: 5 }
 
   scope :by_weekday, -> (day){ where('weekday = ?', day) }

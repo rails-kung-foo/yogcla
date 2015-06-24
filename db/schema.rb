@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813193456) do
+ActiveRecord::Schema.define(version: 20150624205607) do
 
   create_table "admins", force: true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140813193456) do
     t.integer  "studio_id"
     t.integer  "style_id"
     t.string   "start"
-    t.string   "end"
+    t.string   "ending"
     t.string   "weekday"
     t.datetime "created_at"
     t.datetime "updated_at"
