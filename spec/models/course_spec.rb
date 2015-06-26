@@ -179,7 +179,7 @@ RSpec.describe Course, type: :model do
     end
   end
 
-  describe "class.methods" do
+  describe "methods" do
     before :each do
       valid_course
     end
@@ -214,20 +214,57 @@ RSpec.describe Course, type: :model do
     context ".filter_by" do
         before :each do
         valid_course
-        second_course = create(:course, weekday: 'saturday', style_id: 1)
-        third_course = create(:course, weekday: 'monday', studio_id: 1)
         create(:studio)
+        create(:studio, name: 'sun')
         create(:style)
+        create(:style, stil: 'zen')
+
+        second_course = create(:course,
+          weekday: 'saturday',
+          style_id: 2)
+        third_course = create(:course,
+          weekday: 'monday',
+          studio_id: 2)
       end
 
       it "with no param finds all" do
         expect(Course.filter_by).to eq Course.all
       end
 
-      it "day: 'monday' params finds 2" do
+      it "day: 'monday'  finds 2" do
         expect(Course.filter_by(day: 'monday').count).to eq 2
       end
 
+      it "studio: 'sun' finds 1" do
+        expect(Course.filter_by(studio: 'sun').count).to eq 1
+      end
+
+      it "style: 'zen' finds 1" do
+        expect(Course.filter_by(style: 'zen').count).to eq 1
+      end
+
+      it "day: 'monday', style: 'ashtanga' find 2" do
+        expect(Course.filter_by(day: 'monday', style: 'ashtanga').count).to eq 2
+      end
+
+      it "day: 'monday', style: 'ashtanga', studio: 'Yoga Studio' find 1" do
+        expect(Course.filter_by(day: 'monday', style: 'ashtanga', studio: 'Yoga Studio').count).to eq 1
+      end
+
+    end
+
+    context "#studio_name" do
+      it "it returns the name Yoga Studio" do
+        create :studio
+        expect(valid_course.studio_name).to eq 'Yoga Studio'
+      end
+    end
+
+    context "#style_name" do
+      it "it returns the stil ashtanga" do
+        create :style
+        expect(valid_course.style_name).to eq 'ashtanga'
+      end
     end
   end
 end
