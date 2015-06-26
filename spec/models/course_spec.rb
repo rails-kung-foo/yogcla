@@ -11,8 +11,8 @@ RSpec.describe Course, type: :model do
       end
     end
 
-    context "with invalid data" do
-      context "empty field:" do
+    context "with invalid data." do
+      context "Must be present" do
         context "studio_id with emtpy field" do
           before :each do
             build_course.studio_id = nil
@@ -85,12 +85,12 @@ RSpec.describe Course, type: :model do
             expect(build_course).to be_invalid
           end
 
-          it "has errors messages:" do
+          it "includes errors messages: wrong length" do
             expect(build_course.errors.messages[:ending][1]).to include "wrong length"
           end
         end
 
-        context "with wrong format" do
+        context "ending has wrong format" do
           it "00.00 is not valid" do
             build_course.ending = "00.00"
             expect(build_course).to be_invalid
@@ -102,13 +102,52 @@ RSpec.describe Course, type: :model do
           end
         end
 
+        context "start is to short" do
+          before :each do
+            build_course.start = "11:1"
+            build_course.valid?
+          end
 
+          it "is not valid" do
+            expect(build_course).to be_invalid
+          end
+
+          it "includes errors messages: wrong length" do
+            expect(build_course.errors.messages[:start][1]).to include "wrong length"
+          end
+        end
+
+        context "start has wrong format" do
+          it "00.00 is not valid" do
+            build_course.start = "00.00"
+            expect(build_course).to be_invalid
+          end
+
+          it "00a00 is not valid" do
+            build_course.start = "00a00"
+            expect(build_course).to be_invalid
+          end
+        end
       end
+    end
+    # END OF context with invalid data.
+  end
+  # END OF describe Validation
 
+  describe "Trimms field" do
+    let(:example_time){ ' 00:40 ' }
 
+    it "from start" do
+      build_course.start = example_time
+      expect(build_course).to be_valid
+      expect(build_course.start).to eq example_time.strip
     end
 
-
+    it "from ending" do
+      build_course.ending = example_time
+      expect(build_course).to be_valid
+      expect(build_course.ending).to eq example_time.strip
+    end
   end
 
 end
