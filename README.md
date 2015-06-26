@@ -37,7 +37,7 @@ JS filter:
 
 Week 26:
   - Rspec and test gem added.
-  - First specs for model style included.
+  - Specs for model completed. 
 
 Week 25:
   - Basic filter for Course page to filter by attributes, through relationships.
