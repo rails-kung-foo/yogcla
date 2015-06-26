@@ -211,5 +211,23 @@ RSpec.describe Course, type: :model do
       end
     end
 
+    context ".filter_by" do
+        before :each do
+        valid_course
+        second_course = create(:course, weekday: 'saturday', style_id: 1)
+        third_course = create(:course, weekday: 'monday', studio_id: 1)
+        create(:studio)
+        create(:style)
+      end
+
+      it "with no param finds all" do
+        expect(Course.filter_by).to eq Course.all
+      end
+
+      it "day: 'monday' params finds 2" do
+        expect(Course.filter_by(day: 'monday').count).to eq 2
+      end
+
+    end
   end
 end

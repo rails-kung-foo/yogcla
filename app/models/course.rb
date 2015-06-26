@@ -16,19 +16,19 @@ class Course < ActiveRecord::Base
   scope :by_weekday, -> (day){ where('weekday = ?', day) }
 
   # search logicCourse
-	def self.filter_by day = nil, style = nil, studio = nil
+	def self.filter_by options = {}
     result = all
 
-    unless day.blank? || day == 'Select All'
-      result = result.by_weekday day
+    unless options[:day].blank? || options[:day] == 'Select All'
+      result = result.by_weekday options[:day]
 		end
 
-    unless style.blank? || style == 'Select All'
-      result = result.joins(:style).merge(Style.by_stil(style))
+    unless options[:style].blank? || options[:style] == 'Select All'
+      result = result.joins(:style).merge(Style.by_stil(options[:style]))
 		end
 
-    unless studio.blank? || studio == 'Select All'
-      result = result.joins(:studio).merge(Studio.by_name(studio))
+    unless options[:studio].blank? || options[:studio] == 'Select All'
+      result = result.joins(:studio).merge(Studio.by_name(options[:studio]))
 		end
 
     result
