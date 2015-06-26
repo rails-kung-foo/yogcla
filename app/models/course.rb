@@ -10,10 +10,10 @@ class Course < ActiveRecord::Base
 	VALID_TIME = /([0-1][0-9]||[2][0-3]):[0-5][0-9]/
 	validates :start, :ending, presence: true, format:{ with: VALID_TIME },
 		 length:{ is: 5 }
-  validates :studio_id, :style_id, presence: true
+  validates :studio_id, :style_id, :weekday, presence: true
+  validates :weekday, inclusion: { in: ApplicationHelper::WEEKDAYS }
 
   scope :by_weekday, -> (day){ where('weekday = ?', day) }
-
 
   # search logicCourse
 	def self.filter_by day = nil, style = nil, studio = nil
@@ -45,11 +45,6 @@ class Course < ActiveRecord::Base
   # caching
 	def self.latest
 		order(:updated_at).last
-	end
-
-	# set name
-	def self.set_name(course_id)
-		find_by(id: course_id).name
 	end
 
 end

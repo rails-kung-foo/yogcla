@@ -72,6 +72,21 @@ RSpec.describe Course, type: :model do
             expect(build_course.errors.messages[:start]).to be_present
           end
         end
+
+        context "weekday with emtpy field" do
+          before :each do
+            build_course.weekday = nil
+          end
+
+          it "is invalid" do
+            expect(build_course).to be_invalid
+          end
+
+          it "error message is present" do
+            build_course.save
+            expect(build_course.errors.messages[:weekday]).to be_present
+          end
+        end
       end
 
       context "validates time" do
@@ -131,6 +146,20 @@ RSpec.describe Course, type: :model do
       end
     end
     # END OF context with invalid data.
+
+    context "only weekdays allowed for :weekday" do
+      it "fuzzbuzz is invalid" do
+        build_course.weekday = 'fuzzbuzz'
+        expect(build_course).to be_invalid
+      end
+
+      ApplicationHelper::WEEKDAYS.each do |weekday|
+        it "#{ weekday } is valid" do
+          build_course.weekday = weekday
+          expect(build_course).to be_valid
+        end
+      end
+    end
   end
   # END OF describe Validation
 
@@ -150,4 +179,37 @@ RSpec.describe Course, type: :model do
     end
   end
 
+  describe "class.methods" do
+    before :each do
+      valid_course
+    end
+
+    context ".by_weekday" do
+      it "finds one record" do
+        expect(Course.by_weekday('monday').count).to be 1
+      end
+
+      it "finds two records" do
+        build_course.save
+        expect(Course.by_weekday('monday').count).to be 2
+      end
+    end
+
+    context ".latest" do
+      before :each do
+        build_course.save
+      end
+
+      it "returns latest updated record" do
+        expect(Course.latest).to eq build_course
+      end
+
+      it "returns :valid_course, the latest updated" do
+        valid_course.weekday = 'sunday'
+        valid_course.save
+        expect(Course.latest).to eq valid_course
+      end
+    end
+
+  end
 end
