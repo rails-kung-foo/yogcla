@@ -37,7 +37,7 @@ JS filter:
 
 Week 26:
   - Rspec and test gem added.
-  - Specs for model completed. 
+  - Specs for model completed.
 
 Week 25:
   - Basic filter for Course page to filter by attributes, through relationships.
@@ -50,14 +50,14 @@ Week 35:
 Week 34:
 
 Admin:
-- Valdiation: Require strenght password.
+- Validation: Require strength password.
 
 Course:
-- Validation: Times Validates now.
-- layout new: Information for the proper validation time format added.
+- Validation: Times Validation included.
+- Layout :new Information for time format added.
 
 JS filter:
- - Script loads after refresh (turbolink issue)
- - Filter for time added
+ - Script loads after refresh (turbolink issue).
+ - Filter for time added.
 
 <tt>rake doc:app</tt>.
