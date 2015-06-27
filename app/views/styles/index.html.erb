@@ -3,7 +3,7 @@
 <% end %>
 
 <h1>Listing styles</h1>
-
+<%= link_to 'Add new style', new_style_path if session[:admin_id] %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,9 +13,9 @@
   </thead>
 
   <tbody>
-	<% cache ['storeStyle', Style.latest] do %> 
+	<% cache ['storeStyle', Style.latest] do %>
 		<% @styles.each do |style| %>
-			  <% cache ['entry', style] do %> 	
+			  <% cache ['entry', style] do %>
 				  <tr>
 					<td><%= style.stil %></td>
 					<% if session[:admin_id]%>
