@@ -1,6 +1,6 @@
 class StudiosController < ApplicationController
   before_action :set_studio, only: [:show, :edit, :update, :destroy]
-  before_action :check_admin, only: [:edit, :update,:destroy, :new]
+  before_action :check_admin, only: [:edit, :update,:destroy, :new, :create]
 
   # GET /studios
   # GET /studios.json

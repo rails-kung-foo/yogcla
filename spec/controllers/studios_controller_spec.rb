@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe StylesController, type: :controller do
-
-  let(:new_style){ create(:style) }
+RSpec.describe StudiosController, type: :controller do
+  let(:new_studio){ create(:studio) }
   let(:create_admin) { create(:admin) }
   let(:session) { { admin_id: create_admin.id } }
 
@@ -15,9 +14,9 @@ RSpec.describe StylesController, type: :controller do
       expect(response.status).to eq 200
     end
 
-    it "populates array to @styles" do
-      new_style
-      expect(assigns(:styles)).to match_array new_style
+    it "populates array to @studios" do
+      new_studio
+      expect(assigns(:studios)).to match_array new_studio
     end
 
     it "renders template :index" do
@@ -27,8 +26,8 @@ RSpec.describe StylesController, type: :controller do
 
   describe "GET #show" do
     before :each do
-      new_style
-      get :show, id: new_style
+      new_studio
+      get :show, id: new_studio
     end
 
     it "is successful" do
@@ -39,8 +38,8 @@ RSpec.describe StylesController, type: :controller do
       expect(response).to render_template :show
     end
 
-    it "assigns the requested record to @style" do
-      expect(assigns(:style)).to eq new_style
+    it "assigns the requested record to @studio" do
+      expect(assigns(:studio)).to eq new_studio
     end
   end
 
@@ -73,8 +72,8 @@ RSpec.describe StylesController, type: :controller do
         expect(response).to render_template :new
       end
 
-      it "assigns new style to @style" do
-        expect(assigns(:style)).to be_a_new Style
+      it "assigns new studio to @studio" do
+        expect(assigns(:studio)).to be_a_new Studio
       end
     end
   end
@@ -82,8 +81,8 @@ RSpec.describe StylesController, type: :controller do
   describe "GET #edit" do
     context "with no admin session" do
       before :each do
-        new_style
-        get :edit, id: new_style
+        new_studio
+        get :edit, id: new_studio
       end
 
       it "redirects to login_url" do
@@ -98,8 +97,8 @@ RSpec.describe StylesController, type: :controller do
     context "admin is logged in" do
       before :each do
         create_admin
-        new_style
-        get :edit, { id: new_style }, session
+        new_studio
+        get :edit, { id: new_studio }, session
       end
 
       it "is successful" do
@@ -110,8 +109,8 @@ RSpec.describe StylesController, type: :controller do
         expect(response).to render_template :edit
       end
 
-      it "assigns new style to @style" do
-        expect(assigns(:style)).to eq new_style
+      it "assigns new studio to @studio" do
+        expect(assigns(:studio)).to eq new_studio
       end
     end
   end
@@ -119,7 +118,7 @@ RSpec.describe StylesController, type: :controller do
   describe "POST #create" do
     context "with no admin session" do
       before :each do
-        post :create, style: attributes_for(:style)
+        post :create, studio: attributes_for(:studio)
       end
 
       it "redirects to login_url" do
@@ -132,8 +131,8 @@ RSpec.describe StylesController, type: :controller do
 
       it "saves not into db" do
         expect{
-          post :create, attributes_for(:style)
-        }.to change(Style, :count).by(0)
+          post :create, attributes_for(:studio)
+        }.to change(Studio, :count).by(0)
       end
     end
 
@@ -144,29 +143,29 @@ RSpec.describe StylesController, type: :controller do
 
       context "with valid params" do
         let(:post_valid_create) {
-          post :create, { style: attributes_for(:style) }, session
+          post :create, { studio: attributes_for(:studio) }, session
         }
 
         it "redirects to new records page" do
           post_valid_create
-          expect(response).to redirect_to Style.last
+          expect(response).to redirect_to Studio.last
         end
 
-        it "flash notices 'Style was successfully created.'" do
+        it "flash notices 'Studio was successfully created.'" do
           post_valid_create
-          expect(flash[:notice]).to eq 'Style was successfully created.'
+          expect(flash[:notice]).to eq 'Studio was successfully created.'
         end
 
         it "increase db by 1" do
           expect{
             post_valid_create
-          }.to change(Style, :count).by(1)
+          }.to change(Studio, :count).by(1)
         end
       end
 
       context "with invalid params" do
         let(:post_invalid_create) {
-          post :create, { style: { stil: nil } }, session
+          post :create, { studio: { name: nil, adress: nil } }, session
         }
 
         it "redirects to new records page" do
@@ -177,7 +176,7 @@ RSpec.describe StylesController, type: :controller do
         it "increase not db" do
           expect{
             post_invalid_create
-          }.to change(Style, :count).by(0)
+          }.to change(Studio, :count).by(0)
         end
       end
     end
@@ -186,8 +185,8 @@ RSpec.describe StylesController, type: :controller do
   describe "PUT #update" do
     context "with no admin session" do
       before :each do
-        new_style
-        put :update, id: new_style, style:{ stil: 'zen' }
+        new_studio
+        put :update, id: new_studio, studio: attributes_for(:studio)
       end
 
       it "redirects to login_url" do
@@ -199,35 +198,35 @@ RSpec.describe StylesController, type: :controller do
       end
 
       it "record is untouched." do
-        expect(new_style).to eq new_style
+        expect(new_studio).to eq new_studio
       end
     end
 
     context "admin is logged in" do
       context "with valid params" do
         before :each do
-          new_style
-          put :update, { id: new_style, style:{ stil: 'zen' } }, session
+          new_studio
+          put :update, { id: new_studio, studio:  attributes_for(:studio) }, session
         end
 
         it "redirect to records page" do
-          expect(response).to redirect_to new_style
+          expect(response).to redirect_to new_studio
         end
 
-        it "flash notice is 'Style was successfully updated.'" do
-          expect(flash[:notice]).to eq 'Style was successfully updated.'
+        it "flash notice is 'Studio was successfully updated.'" do
+          expect(flash[:notice]).to eq 'Studio was successfully updated.'
         end
 
         it "saves changes in DB" do
-          new_style.reload
-          expect(new_style.stil).to eq 'zen'
+          new_studio.reload
+          expect(new_studio.name).to eq attributes_for(:studio)[:name]
         end
       end
 
       context "with invalid params" do
         before :each do
-          new_style
-          put :update, { id: new_style, style:{ stil: nil } }, session
+          new_studio
+          put :update, { id: new_studio, studio:{ name: nil } }, session
         end
 
         it "renders template :edit" do
@@ -235,8 +234,8 @@ RSpec.describe StylesController, type: :controller do
         end
 
         it "changes not the record" do
-          new_style.reload
-          expect(new_style.stil).to eq 'ashtanga'
+          new_studio.reload
+          expect(new_studio.name).to eq attributes_for(:studio)[:name]
         end
       end
     end
@@ -245,46 +244,48 @@ RSpec.describe StylesController, type: :controller do
   describe "DELETE #destroy" do
     context "with no admin session" do
       before :each do
-        new_style
+        new_studio
       end
 
       it "redirects to login_url" do
-        delete :destroy, id: new_style
+        delete :destroy, id: new_studio
         expect(response).to redirect_to login_url
       end
 
       it "flash notice is 'Please Log In'" do
-        delete :destroy, id: new_style
+        delete :destroy, id: new_studio
         expect(flash[:notice]).to eq "Please Log In"
       end
 
       it "record is untouched." do
         expect{
-          delete :destroy, id: new_style
-        }.to change(Style, :count).by(0)
+          delete :destroy, id: new_studio
+        }.to change(Studio, :count).by(0)
       end
     end
 
     context "admin is logged in" do
       before :each do
-        new_style
+        new_studio
       end
 
       it "redirects to login_url" do
-        delete :destroy, { id: new_style }, session
-        expect(response).to redirect_to styles_url
+        delete :destroy, { id: new_studio }, session
+        expect(response).to redirect_to studios_url
       end
 
-      it "flash notices 'Style was successfully destroyed.'" do
-        delete :destroy, { id: new_style }, session
-        expect(flash[:notice]).to eq 'Style was successfully destroyed.'
+      it "flash notices 'Studio was successfully destroyed.'" do
+        delete :destroy, { id: new_studio }, session
+        expect(flash[:notice]).to eq 'Studio was successfully destroyed.'
       end
 
       it "destroys the request record" do
         expect{
-          delete :destroy, { id: new_style }, session
-        }.to change(Style, :count).by(-1)
+          delete :destroy, { id: new_studio }, session
+        }.to change(Studio, :count).by(-1)
       end
     end
   end
+
+
 end
