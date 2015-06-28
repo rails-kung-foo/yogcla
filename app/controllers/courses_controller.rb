@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :check_admin, only: [:edit, :update,:destroy, :new]
+  before_action :check_admin, only: [:edit, :update,:destroy, :new, :create]
 
   # GET /courses
   # GET /courses.json
@@ -11,9 +11,6 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-		@courses = Course.all
-		@studios = Studio.all
-		@styles = Style.all
   end
 
   # GET /courses/new

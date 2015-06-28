@@ -186,7 +186,7 @@ RSpec.describe StudiosController, type: :controller do
     context "with no admin session" do
       before :each do
         new_studio
-        put :update, id: new_studio, studio: attributes_for(:studio)
+        put :update, id: new_studio, studio: { name: 'sun' }
       end
 
       it "redirects to login_url" do
@@ -198,6 +198,7 @@ RSpec.describe StudiosController, type: :controller do
       end
 
       it "record is untouched." do
+        new_studio.reload
         expect(new_studio).to eq new_studio
       end
     end
@@ -206,7 +207,7 @@ RSpec.describe StudiosController, type: :controller do
       context "with valid params" do
         before :each do
           new_studio
-          put :update, { id: new_studio, studio:  attributes_for(:studio) }, session
+          put :update, { id: new_studio, studio:  { name: 'sun' } }, session
         end
 
         it "redirect to records page" do
@@ -219,7 +220,7 @@ RSpec.describe StudiosController, type: :controller do
 
         it "saves changes in DB" do
           new_studio.reload
-          expect(new_studio.name).to eq attributes_for(:studio)[:name]
+          expect(new_studio.name).to eq 'sun'
         end
       end
 

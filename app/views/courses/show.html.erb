@@ -2,12 +2,12 @@
 
 <p>
   <strong>Studio:</strong>
-  <%=  @studios.find_by(id: @course.studio_id).name %>
+  <%=  @course.studio_name %>
 </p>
 
 <p class="textCapitalize">
   <strong>Style:</strong>
-  <%= @styles.find_by(id: @course.style_id).stil %>
+  <%= @course.style_name %>
 </p>
 
 <p>
