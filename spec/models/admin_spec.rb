@@ -114,33 +114,24 @@ RSpec.describe Admin, type: :model do
         end
       end
 
-      context "password strength" do
-        let(:strength_password){ build(:admin, name: 'admin', password: '') }
+      context "invalid password strenght:" do
+        let(:invalid_admin){ build(:invalid_admin) }
 
-        it "is invalid for 123456" do
-          strength_password.password = "123456"
-          expect(strength_password).to be_invalid
-        end
+        %w(123456 qweasd 123qwe qwe%&/).each do |weak_password|
+          context "for #{weak_password}" do
+            before :each do
+              invalid_admin.password = weak_password
+              invalid_admin.valid?
+            end
 
-        it "is invalid for qweasd" do
-          strength_password.password = "qweasd"
-          expect(strength_password).to be_invalid
-        end
+            it "is invalid" do
+              expect(invalid_admin).to be_invalid
+            end
 
-        it "is invalid for 123qwe" do
-          strength_password.password = "123qwe"
-          expect(strength_password).to be_invalid
-        end
-
-        it "is invalid for qwe%&/" do
-          strength_password.password = "qwe%&/"
-          expect(strength_password).to be_invalid
-        end
-
-        it "error message is present" do
-          strength_password.password = "qwe%&/"
-          strength_password.valid?
-          expect(strength_password.errors.messages[:password]).to be_present
+            it "includes error message: 'is invalid'" do
+              expect(invalid_admin.errors.messages[:password]).to include 'is invalid'
+            end
+          end
         end
       end
     end
