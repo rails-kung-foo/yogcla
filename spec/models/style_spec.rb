@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Style, type: :model do
   let(:valid_style){ create(:style) }
 
-  describe "before create" do
+  describe "before save" do
     it "is downcases the stil" do
       style_name = 'BIKRaM'
       style = create(:style, stil: style_name)
@@ -22,7 +22,7 @@ RSpec.describe Style, type: :model do
     end
 
     it "is invalid with an empty field" do
-      style = build(:style, stil: nil)
+      style = build(:invalid_style)
       expect(style).to be_invalid
     end
 

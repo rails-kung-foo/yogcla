@@ -1,6 +1,9 @@
 FactoryGirl.define do
-  factory :style do |f|
-    f.stil 'ashtanga'
-  end
+  factory :style do
+    stil 'ashtanga'
 
+    factory :invalid_style do
+      stil nil
+    end
+  end
 end
