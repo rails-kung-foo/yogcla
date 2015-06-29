@@ -13,78 +13,21 @@ RSpec.describe Course, type: :model do
 
     context "with invalid data." do
       context "Must be present" do
-        context "studio_id with emtpy field" do
-          before :each do
-            build_course.studio_id = nil
-          end
+        Course.column_names.reject{ |e| e =~ /^(id|created_at|updated_at)$/ }
+        .each do |column|
+          context "#{ column } with emtpy field" do
+            before :each do
+              build_course.send "#{column}=", nil
+            end
 
-          it "is invalid" do
-            expect(build_course).to be_invalid
-          end
+            it "is invalid" do
+              expect(build_course).to be_invalid
+            end
 
-          it "error message is present" do
-            build_course.save
-            expect(build_course.errors.messages[:studio_id]).to be_present
-          end
-        end
-
-        context "style_id with emtpy field" do
-          before :each do
-            build_course.style_id = nil
-          end
-
-          it "is invalid" do
-            expect(build_course).to be_invalid
-          end
-
-          it "error message is present" do
-            build_course.save
-            expect(build_course.errors.messages[:style_id]).to be_present
-          end
-        end
-
-        context "ending with emtpy field" do
-          before :each do
-            build_course.ending = nil
-          end
-
-          it "is invalid" do
-            expect(build_course).to be_invalid
-          end
-
-          it "error message is present" do
-            build_course.save
-            expect(build_course.errors.messages[:ending]).to be_present
-          end
-        end
-
-        context "start with emtpy field" do
-          before :each do
-            build_course.start = nil
-          end
-
-          it "is invalid" do
-            expect(build_course).to be_invalid
-          end
-
-          it "error message is present" do
-            build_course.save
-            expect(build_course.errors.messages[:start]).to be_present
-          end
-        end
-
-        context "weekday with emtpy field" do
-          before :each do
-            build_course.weekday = nil
-          end
-
-          it "is invalid" do
-            expect(build_course).to be_invalid
-          end
-
-          it "error message is present" do
-            build_course.save
-            expect(build_course.errors.messages[:weekday]).to be_present
+            it "error message is present" do
+              build_course.save
+              expect(build_course.errors.messages[column.to_sym]).to be_present
+            end
           end
         end
       end
