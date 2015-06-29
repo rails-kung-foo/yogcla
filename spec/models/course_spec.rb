@@ -25,7 +25,7 @@ RSpec.describe Course, type: :model do
               expect(build_course).to be_invalid
             end
 
-            it "error message is present" do
+            it "error message includes 'can't be blank'" do
               build_course.valid?
               expect(build_course.errors.messages[column.to_sym])
               .to include "can't be blank"
