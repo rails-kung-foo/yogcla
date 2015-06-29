@@ -265,7 +265,50 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    context "with no admin session" do
+      before :each do
+        new_course
+      end
 
+      it "redirects to login_url" do
+        delete :destroy, id: new_course
+        expect(response).to redirect_to login_url
+      end
 
+      it "flash notice is 'Please Log In'" do
+        delete :destroy, id: new_course
+        expect(flash[:notice]).to eq "Please Log In"
+      end
+
+      it "record is untouched." do
+        expect{
+          delete :destroy, id: new_course
+        }.to change(Studio, :count).by(0)
+      end
+    end
+
+    context "admin is logged in" do
+      before :each do
+        new_course
+      end
+
+      it "redirects to login_url" do
+        delete :destroy, { id: new_course }, session
+        expect(response).to redirect_to courses_url
+      end
+
+      it "flash notices 'Course was successfully destroyed.'" do
+        delete :destroy, { id: new_course }, session
+        expect(flash[:notice]).to eq 'Course was successfully destroyed.'
+      end
+
+      it "destroys the request record" do
+        expect{
+          delete :destroy, { id: new_course }, session
+        }.to change(Course, :count).by(-1)
+      end
+    end
+  end
 
 end
