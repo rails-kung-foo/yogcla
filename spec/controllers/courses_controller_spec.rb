@@ -11,23 +11,61 @@ RSpec.describe CoursesController, type: :controller do
   }
 
   describe "GET #index" do
-    before :each do
-      get :index
+    describe "without params" do
+      before :each do
+        get :index
+      end
+
+      it "is successful" do
+        expect(response.status).to eq 200
+      end
+
+      it "populates array to @courses" do
+        new_course
+        expect(assigns(:courses)).to match_array new_course
+      end
+
+      it "renders template :index" do
+        expect(response).to render_template :index
+      end
     end
 
-    it "is successful" do
-      expect(response.status).to eq 200
-    end
+    describe "with params" do
+      let(:zen_style){ create :zen_style }
+      let(:sun_yoga){ create :sun_yoga }
+      let(:second_course){ create :second_course }
+      let(:third_course){ create :third_course }
 
-    it "populates array to @courses" do
-      new_course
-      expect(assigns(:courses)).to match_array new_course
-    end
 
-    it "renders template :index" do
-      expect(response).to render_template :index
-    end
+      before :each do
+        new_studio
+        new_style
+        new_course
+        zen_style
+        sun_yoga
+        second_course
+        third_course
+      end
 
+      it "params[filter_weekday]: 'sunday' returns an array of
+        [second_course, third_course]" do
+        get :index, filter_weekday: 'sunday'
+        expect(assigns(:courses)).to match_array([second_course, third_course])
+      end
+
+      it "params[filter_weekday]: 'sunday' and [filter_style]: 'zen' returns an
+        array of [second_course]" do
+        get :index, filter_weekday: 'sunday', filter_style: 'zen'
+        expect(assigns(:courses)).to match_array([third_course])
+      end
+
+      it "params[filter_weekday]: 'sunday', [filter_style]: 'ashtanga',
+        [filter_studio]: 'Sun Yoga' retuns array of [second_course]" do
+        get :index, filter_style: 'ashtanga', filter_studio: 'Sun Yoga', filter_weekday: 'sunday'
+        expect(assigns(:courses)).to match_array([second_course])
+      end
+
+    end
   end
 
   describe "GET #show" do
