@@ -17,6 +17,7 @@ RSpec.describe Course, type: :model do
         .each do |column|
           context "#{ column } with emtpy field" do
             before :each do
+              build_course
               build_course.send "#{column}=", nil
             end
 
@@ -25,8 +26,9 @@ RSpec.describe Course, type: :model do
             end
 
             it "error message is present" do
-              build_course.save
-              expect(build_course.errors.messages[column.to_sym]).to be_present
+              build_course.valid?
+              expect(build_course.errors.messages[column.to_sym])
+              .to include "can't be blank"
             end
           end
         end
